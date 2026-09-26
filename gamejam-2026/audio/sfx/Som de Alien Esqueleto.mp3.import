@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bj5y4h8qlm42c"
+path="res://.godot/imported/Som de Alien Esqueleto.mp3-a69d1a0498efafb5feb6d10953f91e8f.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Som de Alien Esqueleto.mp3"
+dest_files=["res://.godot/imported/Som de Alien Esqueleto.mp3-a69d1a0498efafb5feb6d10953f91e8f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

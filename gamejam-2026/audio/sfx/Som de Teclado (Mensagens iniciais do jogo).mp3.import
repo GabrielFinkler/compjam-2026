@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://inxpvmycgjgj"
+path="res://.godot/imported/Som de Teclado (Mensagens iniciais do jogo).mp3-c1635294c47d7b1f90085178dd4b17c7.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Som de Teclado (Mensagens iniciais do jogo).mp3"
+dest_files=["res://.godot/imported/Som de Teclado (Mensagens iniciais do jogo).mp3-c1635294c47d7b1f90085178dd4b17c7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

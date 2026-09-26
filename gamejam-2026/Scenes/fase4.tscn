@@ -11153,7 +11153,7 @@ largura_zona_graus = 70.0
 reducao_zona_graus = 15.0
 
 [node name="DestravarSaida" parent="Interativos" unique_id=1729930443 node_paths=PackedStringArray("porta") instance=ExtResource("f04_terminal")]
-position = Vector2(80, 480)
+position = Vector2(81, 478)
 porta = NodePath("../../Portas/PortaSaida")
 mensagem = "SAÍDA DESTRAVADA! CORRA PRO NORTE!"
 texto_prompt = "[E] DESTRAVAR SAÍDA"
@@ -11169,13 +11169,9 @@ destino = NodePath("../DutoEntrada")
 
 [node name="Energias" type="Node2D" parent="." unique_id=1691570062]
 
-[node name="EnergiaColetavel1" parent="Energias" unique_id=1162989078 instance=ExtResource("f04_energia")]
-z_index = 1
-position = Vector2(344, 632)
-
 [node name="EnergiaSalaEsquerda" parent="Energias" unique_id=1644847321 instance=ExtResource("f04_energia")]
 z_index = 1
-position = Vector2(216, 568)
+position = Vector2(243, 550)
 
 [node name="EnergiaColetavel2" parent="Energias" unique_id=1421442711 instance=ExtResource("f04_energia")]
 z_index = 1

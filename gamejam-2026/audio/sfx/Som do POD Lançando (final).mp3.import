@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bd3tw0d3kbl2b"
+path="res://.godot/imported/Som do POD Lançando (final).mp3-001764351f6edaee0f817ba29d143ed9.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Som do POD Lançando (final).mp3"
+dest_files=["res://.godot/imported/Som do POD Lançando (final).mp3-001764351f6edaee0f817ba29d143ed9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
