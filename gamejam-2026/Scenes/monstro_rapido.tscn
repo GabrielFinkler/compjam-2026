@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Scenes/monstro.tscn" id="1_monstro_base"]
+
+[node name="MonstroRapido" instance=ExtResource("1_monstro_base")]
+velocidade_perseguicao = 240.0
+perseguir_para_sempre = true

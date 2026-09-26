@@ -1,0 +1,84 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/energia_coletavel.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Imagens/orbe_energia_spritesheet.png" id="orbe_sheet"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_energia"]
+radius = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orbe0"]
+atlas = ExtResource("orbe_sheet")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orbe1"]
+atlas = ExtResource("orbe_sheet")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orbe2"]
+atlas = ExtResource("orbe_sheet")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orbe3"]
+atlas = ExtResource("orbe_sheet")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orbe4"]
+atlas = ExtResource("orbe_sheet")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orbe5"]
+atlas = ExtResource("orbe_sheet")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orbe6"]
+atlas = ExtResource("orbe_sheet")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orbe7"]
+atlas = ExtResource("orbe_sheet")
+region = Rect2(56, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_orbe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orbe0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orbe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orbe2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orbe3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orbe4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orbe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orbe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orbe7")
+}],
+"loop": true,
+"name": &"girar",
+"speed": 6.0
+}]
+
+[node name="EnergiaColetavel" type="Area2D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_energia")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_orbe")
+animation = &"girar"
+autoplay = "girar"
