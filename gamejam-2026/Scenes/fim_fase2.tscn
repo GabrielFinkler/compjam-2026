@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b18mjc56x5a1f"]
+
+[ext_resource type="Script" uid="uid://cklutnw7ak3g2" path="res://Scripts/fim_fase1.gd" id="1_script"]
+
+[node name="FimFase2" type="Control" unique_id=961967883]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_script")
+titulo = "FASE 2 CONCLUÍDA!"
+subtitulo = "Você escapou do módulo habitacional... mas a nave ainda guarda segredos."

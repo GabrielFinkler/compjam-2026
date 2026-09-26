@@ -15,14 +15,10 @@ run/main_scene="res://Scenes/menu_principal.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
-[audio]
-
-buses/default_bus_layout="uid://07oadmunjoaq"
-
 [autoload]
 
 Persistencia="*res://Scripts/persistencia.gd"
-Audio="*uid://0q33q75e2lty"
+Audio="*res://audio/audio_manager.gd"
 
 [display]
 

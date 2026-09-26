@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://b2uxc1mfblb62"]
+[gd_scene format=4 uid="uid://b7e22a7y4nlmm"]
 
 [ext_resource type="PackedScene" path="res://Scenes/porta.tscn" id="1_kxwl3"]
 [ext_resource type="Texture2D" uid="uid://b3iijgp0ucw8f" path="res://Imagens/Space003.png" id="3_bpefb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://crb5abgtwg5ao" path="res://Imagens/spaceship tiles.png" id="5_gi430"]
 [ext_resource type="Texture2D" uid="uid://d13q8h3mrwxae" path="res://Imagens/pisos_paredes_16px.png" id="6_ky766"]
 [ext_resource type="PackedScene" path="res://Scenes/jogador.tscn" id="7_24m2b"]
+[ext_resource type="Script" uid="uid://cvnbdh25555ik" path="res://Scripts/tutorial.gd" id="8_jho64"]
 [ext_resource type="Script" uid="uid://ckx5lyfswcfve" path="res://Scripts/tela_pausa.gd" id="9_wi011"]
 [ext_resource type="PackedScene" path="res://Scenes/energia_coletavel.tscn" id="f03_energia"]
 [ext_resource type="PackedScene" path="res://Scenes/item_isca.tscn" id="f03_item"]
@@ -15,7 +16,6 @@
 [ext_resource type="Script" uid="uid://bb13i888os1e3" path="res://Scripts/objetivos.gd" id="f03_objetivos"]
 [ext_resource type="PackedScene" path="res://Scenes/saida_fase.tscn" id="f03_saida"]
 [ext_resource type="TileSet" uid="uid://c65dr484ot0ly" path="res://Resources/tileset_fase2.tres" id="f03_tileset"]
-[ext_resource type="Script" uid="uid://ccksl1dhxanvy" path="res://Scripts/sombra_suave_tiles.gd" id="sombra_suave"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewtnh"]
 texture = ExtResource("3_bpefb")
@@ -11017,7 +11017,7 @@ fill_to = Vector2(1, 0.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f03_gatilho"]
 size = Vector2(120, 16)
 
-[node name="Fase3" type="Node2D" unique_id=1412135807]
+[node name="Fase03" type="Node2D" unique_id=1412135807]
 
 [node name="Fundo" type="TileMapLayer" parent="." unique_id=64467845]
 z_index = -1
@@ -11037,7 +11037,6 @@ tile_set = ExtResource("f03_tileset")
 z_index = 1
 tile_map_data = PackedByteArray("AAAQAA8AAgAFABAAAAARAA8AAgADABAAAAAVAA8AAgAEABAAAAAWAA8AAgAFABAAAAAXAA8AAgAFABAAAAATABUAAgAGABAAAAAVABUAAgAEABAAAAAWABUAAgAEABAAAAAXABUAAgAFABAAAAAQABoAAgAKABAAAAARABoAAgAEABAAAAASABoAAgAEABAAAAATABoAAgAGABAAAAAQACUAAgAGABAAAAAVACUAAgAKABAAAAAWACUAAgADABAAAAAXACUAAgAKABAAAAATACoAAgAFABAAAAAUACoAAgAEABAAAAAVACoAAgAGABAAAAAXACoAAgAKABAAAAAQAC8AAgAFABAAAAARAC8AAgAKABAAAAASAC8AAgAKABAAAAATAC8AAgAEABAAAAAUAC8AAgAKABAAAAAQADQAAgAGABAAAAAVADQAAgAGABAAAAAXADQAAgADABAAAAATADkAAgAKABAAAAAUADkAAgAFABAAAAAVADkAAgAFABAAAAAWADkAAgAEABAAAAAXADkAAgAEABAAAAAQAEIAAgAFABAAAAARAEIAAgAGABAAAAATAEIAAgAGABAAAAAQAEcAAgAGABAAAAAVAEcAAgAKABAAAAAWAEcAAgAEABAAAAAXAEcAAgAKABAAAAATAFEAAgAEABAAAAAUAFEAAgAGABAAAAAWAFEAAgADABAAAAAXAFEAAgAEABAAAAAQAFYAAgAGABAAAAASAFYAAgADABAAAAATAFYAAgAKABAAAAAUAFYAAgAFABAAAAAXAFwAAQALAAwAAAAQAF0AAQAEAAwAAAAWAF8AAgAJABAAAAA=")
 tile_set = ExtResource("f03_tileset")
-script = ExtResource("sombra_suave")
 
 [node name="Navegacao" type="NavigationRegion2D" parent="." unique_id=1416669919]
 navigation_polygon = SubResource("NavigationPolygon_f03")
@@ -11099,6 +11098,9 @@ editor_draw_limits = true
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1390703897]
 color = Color(0, 0, 0, 1)
 
+[node name="Tutorial" type="CanvasLayer" parent="." unique_id=339552806]
+script = ExtResource("8_jho64")
+
 [node name="Pausa" type="CanvasLayer" parent="." unique_id=492927783]
 script = ExtResource("9_wi011")
 
@@ -11110,7 +11112,7 @@ position = Vector2(320, 1624)
 
 [node name="SaidaFase" parent="." unique_id=799685938 instance=ExtResource("f03_saida")]
 position = Vector2(320, 120)
-destino = "res://Scenes/fase4.tscn"
+destino = "res://Scenes/menu_principal.tscn"
 
 [node name="BombaIsca" parent="." unique_id=1830786299 instance=ExtResource("f03_item")]
 z_index = 1
@@ -11144,10 +11146,9 @@ usar_navegacao = true
 mascara_visao = 1
 comeca_adormecido = true
 mensagem_despertar = "ALGO SAIU DA VENTILAÇÃO! OLHE PRA TRÁS E SEGURE O BOTÃO ESQUERDO PRA CONGELAR!"
-pixels_olhos = []
 
 [node name="Objetivos" type="CanvasLayer" parent="." unique_id=376006413]
 script = ExtResource("f03_objetivos")
-textos = "Corra pelo corredor até a saída ao NORTE."
+textos = "Atravesse o corredor até a saída lá em cima."
 
 [connection signal="body_entered" from="GatilhoVent" to="Monstros/MonstroRapido" method="despertar" unbinds=1]

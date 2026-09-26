@@ -2,20 +2,24 @@ extends Node
 ## Autoload: progresso salvo (save) e configurações (volume), gravados em user://.
 ## Save e configurações ficam em arquivos separados: mudar o volume no menu, sem
 ## nunca ter jogado, não pode fazer aparecer um "Continuar" que não existe.
+## Rodando pelo editor, o progresso vai pra outro arquivo: o jogo exportado usa a mesma pasta
+## user://, e sem isso testar pelo Godot fazia o compilado já abrir com "Continuar".
 
-const CAMINHO_SAVE := "user://save.json"
+const CAMINHO_SAVE_JOGO := "user://save.json"
+const CAMINHO_SAVE_EDITOR := "user://save_editor.json"
 const CAMINHO_CONFIG := "user://config.json"
 const PRIMEIRA_FASE := "res://Scenes/fase1.tscn"
 
 var volume_master: float = 1.0 # 0.0 (mudo) a 1.0 (máximo)
 var tela_cheia: bool = true # true = tela cheia sem borda; false = janela
 var _save: Dictionary = {}
+var _caminho_save: String = CAMINHO_SAVE_EDITOR if OS.has_feature("editor") else CAMINHO_SAVE_JOGO
 
 func _ready() -> void:
 	var config := _ler(CAMINHO_CONFIG)
 	volume_master = config.get("volume", 1.0)
 	tela_cheia = config.get("tela_cheia", true)
-	_save = _ler(CAMINHO_SAVE)
+	_save = _ler(_caminho_save)
 	_aplicar_volume()
 	_aplicar_tela()
 
@@ -35,12 +39,12 @@ func iniciar_novo_jogo() -> void:
 	# História e tutorial da fase 1 guardam no root que já foram vistos: jogo novo mostra de novo
 	for chave in [&"historia_fase1_vista", &"tutorial_fase1_concluido"]:
 		get_tree().root.remove_meta(chave)
-	_gravar(CAMINHO_SAVE, _save)
+	_gravar(_caminho_save, _save)
 
 ## Chamado ao entrar numa fase, pra "Continuar" saber de onde retomar.
 func registrar_fase(caminho_cena: String) -> void:
 	_save["fase_atual"] = caminho_cena
-	_gravar(CAMINHO_SAVE, _save)
+	_gravar(_caminho_save, _save)
 
 ## Muda o volume na hora (chamado a cada movimento do slider), sem gravar em disco.
 func definir_volume(valor: float) -> void:
@@ -69,6 +73,7 @@ func _aplicar_tela() -> void:
 	var escala := maxi(1, mini(int(area.size.x / 480.0), int((area.size.y - 40) / 270.0)))
 	var tamanho := Vector2i(480, 270) * escala
 	DisplayServer.window_set_size(tamanho)
+	@warning_ignore("integer_division") # Centraliza em pixels inteiros: descartar o 0,5 é de propósito
 	DisplayServer.window_set_position(area.position + (area.size - tamanho) / 2)
 
 func _aplicar_volume() -> void:

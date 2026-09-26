@@ -1,3 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Builds exportados (vão para as Releases do GitHub, não para o git: passam de 100 MB)
+/Compilados/
