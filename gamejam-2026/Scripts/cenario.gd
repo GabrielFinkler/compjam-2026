@@ -107,4 +107,3 @@ func _on_saida_body_entered(body: Node2D) -> void:
 					"Excelente! Você destrancou as passagens, sobreviveu à criatura e alcançou a escotilha de escape!\n\n" +
 					"Pressione [R] a qualquer momento para reiniciar e jogar novamente."
 				)
-
