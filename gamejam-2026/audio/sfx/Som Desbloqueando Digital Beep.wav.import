@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ceatt1q6agje2"
+path="res://.godot/imported/Som Desbloqueando Digital Beep.wav-d7e73cc6d63b90123c2e704802fb4e6e.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Som Desbloqueando Digital Beep.wav"
+dest_files=["res://.godot/imported/Som Desbloqueando Digital Beep.wav-d7e73cc6d63b90123c2e704802fb4e6e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

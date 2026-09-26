@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bqlov61hdjpgd"
+path="res://.godot/imported/Som Coletar Energia.ogg-5bb19c0d7d72e911d6bdde85906925ab.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/Som Coletar Energia.ogg"
+dest_files=["res://.godot/imported/Som Coletar Energia.ogg-5bb19c0d7d72e911d6bdde85906925ab.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

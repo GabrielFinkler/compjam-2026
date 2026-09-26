@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwum2bfqdutpm"
+path="res://.godot/imported/Som Botões Interface.mp3-fceaf04b2247fea8bdf4b7998578231d.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Som Botões Interface.mp3"
+dest_files=["res://.godot/imported/Som Botões Interface.mp3-fceaf04b2247fea8bdf4b7998578231d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

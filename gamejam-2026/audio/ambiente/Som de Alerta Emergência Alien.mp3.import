@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bq6g2yop7k7oa"
+path="res://.godot/imported/Som de Alerta Emergência Alien.mp3-c57d6f08718a2595e159d12ae1e42fc3.mp3str"
+
+[deps]
+
+source_file="res://audio/ambiente/Som de Alerta Emergência Alien.mp3"
+dest_files=["res://.godot/imported/Som de Alerta Emergência Alien.mp3-c57d6f08718a2595e159d12ae1e42fc3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

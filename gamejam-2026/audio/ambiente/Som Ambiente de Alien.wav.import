@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1au6a7vc4p7n"
+path="res://.godot/imported/Som Ambiente de Alien.wav-56fe8c02052394785eb40b679a3c676c.sample"
+
+[deps]
+
+source_file="res://audio/ambiente/Som Ambiente de Alien.wav"
+dest_files=["res://.godot/imported/Som Ambiente de Alien.wav-56fe8c02052394785eb40b679a3c676c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dp87vc1xcrna4"
+path="res://.godot/imported/Som Alavanca.mp3-c460c4b25740f304447b47b255e707e1.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Som Alavanca.mp3"
+dest_files=["res://.godot/imported/Som Alavanca.mp3-c460c4b25740f304447b47b255e707e1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

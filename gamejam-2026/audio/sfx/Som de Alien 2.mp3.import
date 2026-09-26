@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bcjcmfhqkle6f"
+path="res://.godot/imported/Som de Alien 2.mp3-9633541957dc85eeee9c860b73f465b7.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Som de Alien 2.mp3"
+dest_files=["res://.godot/imported/Som de Alien 2.mp3-9633541957dc85eeee9c860b73f465b7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bbj5h5vm2ts4l"
+path="res://.godot/imported/Som Luz Ligada (Botão Esquerdo Mouse).mp3-4a89b7e2fffdce6e0c1c9c450a9f9738.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Som Luz Ligada (Botão Esquerdo Mouse).mp3"
+dest_files=["res://.godot/imported/Som Luz Ligada (Botão Esquerdo Mouse).mp3-4a89b7e2fffdce6e0c1c9c450a9f9738.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
