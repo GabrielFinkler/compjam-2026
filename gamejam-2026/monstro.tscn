@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bv83m1kmax2q0"]
+
+[ext_resource type="Script" path="res://monstro.gd" id="1_monstro"]
+[ext_resource type="Texture2D" path="res://Imagens/monstro.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2"]
+radius = 12.0
+
+[node name="Monstro" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_monstro")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")
+hframes = 3
+frame = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_1")
+
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_2")
