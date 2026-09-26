@@ -4,6 +4,9 @@ extends CanvasLayer
 ## No texto, {restantes} vira o número de travas que ainda faltam na porta atual.
 
 @export var portas: Array[Node] = []
+## Opcional: nome do sinal de cada item de "portas" que avança o objetivo (vazio = "aberta").
+## Ex.: a mesma porta duas vezes, com "emperrada_vista" e depois "aberta" (fase 4).
+@export var sinais: PackedStringArray = []
 ## Um objetivo por linha. (Texto simples de propósito: a lista PackedStringArray
 ## sumia quando o editor re-salvava a cena.)
 @export_multiline var textos: String = ""
@@ -29,7 +32,8 @@ func _ready() -> void:
 		esperar.tree_exited.connect(_on_esperar_saiu, CONNECT_ONE_SHOT)
 	for i in portas.size():
 		var porta := portas[i]
-		porta.aberta.connect(_on_porta_aberta.bind(i))
+		var sinal := sinais[i] if i < sinais.size() and sinais[i] != "" else "aberta"
+		porta.connect(sinal, _on_porta_aberta.bind(i))
 		if porta.has_signal("trava_liberada"):
 			porta.trava_liberada.connect(func(_restantes: int): _mostrar())
 	_mostrar()
@@ -82,10 +86,18 @@ func _criar_interface() -> void:
 	_painel.add_theme_stylebox_override("panel", estilo)
 	_painel.theme = preload("res://Scripts/tema_pixel.gd").criar()
 	add_child(_painel)
+	var coluna := VBoxContainer.new()
+	coluna.add_theme_constant_override("separation", 3)
+	_painel.add_child(coluna)
+	var titulo := Label.new()
+	titulo.text = "OBJETIVO"
+	titulo.add_theme_font_size_override("font_size", 6)
+	titulo.add_theme_color_override("font_color", COR_BORDA)
+	coluna.add_child(titulo)
 	_texto = Label.new()
 	_texto.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_texto.custom_minimum_size = Vector2(160, 0)
 	# 6 e não 8: a tela de 480x270 é esticada 4x (1080p), então a fonte sai com 24 px reais,
 	# múltiplo de 8, e continua nítida (também em 720p e 1440p)
 	_texto.add_theme_font_size_override("font_size", 6)
-	_painel.add_child(_texto)
+	coluna.add_child(_texto)

@@ -42,6 +42,7 @@ animations = [{
 [node name="MonstroRapido" instance=ExtResource("1_monstro_base")]
 velocidade_perseguicao = 150.0
 perseguir_para_sempre = true
+pixels_olhos = PackedVector2Array(5, 6, 6, 6, 8, 6, 9, 6)
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_rapido")

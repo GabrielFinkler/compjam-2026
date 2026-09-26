@@ -20,10 +20,17 @@ extends CharacterBody2D
 @export_flags_2d_physics var mascara_visao: int = 0xFFFFFFFF ## Camadas que bloqueiam a visão (ex.: só paredes, pra enxergar por cima dos móveis)
 @export var comeca_adormecido: bool = false ## Fica invisível e parado até despertar() ser chamado
 @export var mensagem_despertar: String = "" ## Aviso mostrado quando desperta (vazio = nenhum)
+@export var atraso_despertar: float = 0.0 ## Segundos entre o aviso e o monstro aparecer (dá tempo de ler)
+## Pixels dos olhos no quadro 16x16 do sprite: de tempos em tempos eles acendem em vermelho
+## (vazio = sem olhos piscando). Os olhos têm que ficar no mesmo lugar em todos os quadros.
+@export var pixels_olhos: PackedVector2Array = []
+@export var intervalo_olhos: float = 5.0 ## Segundos entre uma piscada vermelha e outra
 @export var tempo_congelado_extra: float = 0.4 ## Segundos que continua parado depois que a luz sai dele
 
 const COR_CONGELADO := Color(0.5, 0.8, 1.0)
 const VELOCIDADE_GIRO := 10.0 # Quão rápido o sprite vira pra direção em que anda
+const COR_OLHOS := Color(1.0, 0.1, 0.05)
+const TAMANHO_QUADRO := 16
 const Aviso := preload("res://Scripts/aviso.gd")
 
 var jogador: Node2D
@@ -54,16 +61,49 @@ func _ready() -> void:
 		add_child(_agente)
 	if comeca_adormecido:
 		_ativar(false)
+	if not pixels_olhos.is_empty():
+		_criar_olhos()
 
 ## Acorda um monstro que começou adormecido: aparece e já vem atrás do jogador.
 func despertar() -> void:
 	if not comeca_adormecido:
 		return
 	comeca_adormecido = false
-	_ativar(true)
-	perseguindo = true
 	if mensagem_despertar != "":
 		Aviso.mostrar(get_tree().current_scene, mensagem_despertar, Color(1.0, 0.25, 0.2), 4.0)
+	if atraso_despertar > 0.0:
+		# Timer (e não await): se a fase recarregar antes, a ligação some junto com o monstro
+		get_tree().create_timer(atraso_despertar, false).timeout.connect(_surgir)
+	else:
+		_surgir()
+
+func _surgir() -> void:
+	_ativar(true)
+	perseguindo = true
+
+# Olhos vermelhos: um sprite só com esses pixels, por cima do monstro (gira junto com ele),
+# que brilha sozinho no escuro e acende rapidinho a cada "intervalo_olhos"
+func _criar_olhos() -> void:
+	var imagem := Image.create(TAMANHO_QUADRO, TAMANHO_QUADRO, false, Image.FORMAT_RGBA8)
+	for p in pixels_olhos:
+		imagem.set_pixelv(Vector2i(p), COR_OLHOS)
+	var olhos := Sprite2D.new()
+	olhos.texture = ImageTexture.create_from_image(imagem)
+	olhos.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	var sem_sombra := CanvasItemMaterial.new()
+	sem_sombra.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
+	olhos.material = sem_sombra
+	olhos.modulate.a = 0.0
+	_sprite.add_child(olhos)
+	# Começa num ponto aleatório do ciclo: monstros iguais não piscam todos juntos
+	get_tree().create_timer(randf() * intervalo_olhos, false).timeout.connect(_piscar_olhos.bind(olhos))
+
+func _piscar_olhos(olhos: Sprite2D) -> void:
+	var piscar := create_tween().set_loops()
+	piscar.tween_interval(intervalo_olhos)
+	piscar.tween_property(olhos, "modulate:a", 1.0, 0.08)
+	piscar.tween_interval(0.35)
+	piscar.tween_property(olhos, "modulate:a", 0.0, 0.25)
 
 func _ativar(ligado: bool) -> void:
 	visible = ligado
@@ -73,7 +113,10 @@ func _ativar(ligado: bool) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Sob o feixe fica congelado; ao sair dele ainda leva tempo_congelado_extra pra voltar
-	if jogador and jogador.esta_no_feixe_foco(global_position, raio):
+	# Array tipado de propósito: "jogador" é Node2D, a chamada é dinâmica e um [get_rid()]
+	# solto chegaria como Array comum, que o esta_no_feixe_foco (Array[RID]) recusa
+	var excluir: Array[RID] = [get_rid()]
+	if jogador and jogador.esta_no_feixe_foco(global_position, raio, excluir):
 		_tempo_congelado = tempo_congelado_extra
 	elif _tempo_congelado > 0.0:
 		_tempo_congelado -= delta

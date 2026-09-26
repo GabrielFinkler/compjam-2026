@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/saida_fase.tscn" id="f04_saida"]
 [ext_resource type="TileSet" uid="uid://c65dr484ot0ly" path="res://Resources/tileset_fase2.tres" id="f04_tileset"]
 [ext_resource type="Script" uid="uid://ccksl1dhxanvy" path="res://Scripts/sombra_suave_tiles.gd" id="sombra_suave"]
+[ext_resource type="PackedScene" path="res://Scenes/terminal.tscn" id="f04_terminal"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewtnh"]
 texture = ExtResource("3_bpefb")
@@ -11122,6 +11123,8 @@ position = Vector2(480, 888)
 [node name="PortaSaida" parent="Portas" unique_id=208262598 instance=ExtResource("1_kxwl3")]
 z_index = 1
 position = Vector2(480, 344)
+mensagem_emperrada = "A SAÍDA EMPERROU! DESTRAVE NA SALA DA ESQUERDA!"
+avisar_quando_perto = true
 
 [node name="PortaCelaEsquerda" parent="Portas" unique_id=1818366160 instance=ExtResource("1_kxwl3")]
 z_index = 1
@@ -11141,13 +11144,19 @@ destino = "res://Scenes/fase5.tscn"
 
 [node name="PainelEnergia" parent="Interativos" unique_id=1016416079 node_paths=PackedStringArray("porta") instance=ExtResource("f04_maquina")]
 position = Vector2(792, 392)
-porta = NodePath("../../Portas/PortaSaida")
+porta = NodePath("../../Portas/PortaCelaDireita")
 checagens = 2
-mensagem = "ENERGIA RESTAURADA! A SAÍDA ABRIU... E AS CELAS TAMBÉM!"
+mensagem = "ENERGIA RESTAURADA! MAS AS CELAS ABRIRAM..."
 texto_prompt = "[E] RELIGAR ENERGIA"
 tempo_volta = 1.5
 largura_zona_graus = 70.0
 reducao_zona_graus = 15.0
+
+[node name="DestravarSaida" parent="Interativos" node_paths=PackedStringArray("porta") instance=ExtResource("f04_terminal")]
+position = Vector2(80, 480)
+porta = NodePath("../../Portas/PortaSaida")
+mensagem = "SAÍDA DESTRAVADA! CORRA PRO NORTE!"
+texto_prompt = "[E] DESTRAVAR SAÍDA"
 
 [node name="DutoEntrada" parent="Interativos" unique_id=1413553454 node_paths=PackedStringArray("destino") instance=ExtResource("f04_duto")]
 position = Vector2(432, 768)
@@ -11162,6 +11171,10 @@ destino = NodePath("../DutoEntrada")
 [node name="EnergiaColetavel1" parent="Energias" unique_id=1162989078 instance=ExtResource("f04_energia")]
 z_index = 1
 position = Vector2(344, 632)
+
+[node name="EnergiaSalaEsquerda" parent="Energias" instance=ExtResource("f04_energia")]
+z_index = 1
+position = Vector2(216, 568)
 
 [node name="EnergiaColetavel2" parent="Energias" unique_id=1421442711 instance=ExtResource("f04_energia")]
 z_index = 1
@@ -11203,11 +11216,14 @@ comeca_adormecido = true
 
 [node name="Objetivos" type="CanvasLayer" parent="." unique_id=696439033 node_paths=PackedStringArray("portas")]
 script = ExtResource("f04_objetivos")
-portas = [NodePath("../Portas/PortaSaida")]
-textos = "Religue a energia: VENTILAÇÃO da DIREITA.
-Bichos soltos! Corra pra saída no ALTO!"
+portas = [NodePath("../Portas/PortaCelaDireita"), NodePath("../Portas/PortaSaida"), NodePath("../Portas/PortaSaida")]
+sinais = PackedStringArray("aberta", "emperrada_vista", "aberta")
+textos = "Entre pelo duto e religue a energia à DIREITA.
+Fuja pela saída ao NORTE!
+Saída emperrada! Destrave na sala à ESQUERDA.
+Fuja pela saída ao NORTE!"
 
 [connection signal="concluida" from="Interativos/PainelEnergia" to="Portas/PortaCelaEsquerda" method="abrir"]
-[connection signal="concluida" from="Interativos/PainelEnergia" to="Portas/PortaCelaDireita" method="abrir"]
+[connection signal="concluida" from="Interativos/PainelEnergia" to="Portas/PortaSaida" method="emperrar" binds= [0.0, 0.0]]
 [connection signal="concluida" from="Interativos/PainelEnergia" to="Monstros/BichoEsquerda" method="despertar"]
 [connection signal="concluida" from="Interativos/PainelEnergia" to="Monstros/BichoDireita" method="despertar"]

@@ -4,16 +4,19 @@ extends StaticBody2D
 ## Para porta vertical, gire o nó 90° na cena.
 ## Com "travas" > 1, cada abrir() solta uma trava (LED fica amarelo) e ela só abre na última.
 ## emperrar(segundos, atraso): a porta bate fechando (mesmo se estava aberta), fica esse tempo
-## tentando abrir com o LED piscando e depois abre de novo sozinha. Dá pra ligar num sinal da
-## cena com "binds" (ex.: fase 5, quando o terminal do laboratório libera a saída).
+## tentando abrir com o LED piscando e depois abre de novo sozinha. Com segundos = 0 ela só
+## desemperra quando algo chamar abrir() (ex.: fase 4, destravar a saída na mão). Dá pra ligar
+## num sinal da cena com "binds" (ex.: fase 5, quando o terminal do laboratório libera a saída).
 
 signal aberta
 signal trava_liberada(restantes: int) ## Uma trava saiu, mas ainda faltam outras
 signal emperrou(segundos: float) ## Bateu fechando e emperrou: abre sozinha depois
+signal emperrada_vista ## O jogador chegou perto dela emperrada pela primeira vez (com avisar_quando_perto)
 
 @export var comeca_aberta: bool = false
 @export_range(1, 5) var travas: int = 1 ## Quantos terminais/máquinas precisam ser ativados até abrir
 @export var mensagem_emperrada: String = "" ## Aviso na tela quando ela emperra (vazio = nenhum)
+@export var avisar_quando_perto: bool = false ## O aviso só aparece quando o jogador chega perto da porta emperrada, e não na hora em que ela emperra
 
 const COR_TRANCADA := Color(1.0, 0.23, 0.23)
 const COR_LIBERADA := Color(0.23, 1.0, 0.43)
@@ -22,6 +25,8 @@ const ESPERA_LED := 0.3
 const TEMPO_ABRIR := 0.5
 const ABERTURA_TENTATIVA := 0.8 # Emperrada: as metades só chegam a abrir 20% antes de voltar
 const TEMPO_BATER := 0.12 # Fechando de supetão
+const RAIO_PERTO := 48.0 # Distância em que conta como "chegou perto" (avisar_quando_perto)
+const INTERVALO_AVISO := 4.0 # Voltando pra perto, repete o aviso no máximo a cada tantos segundos
 const Aviso := preload("res://Scripts/aviso.gd")
 
 @onready var _metade_a: Sprite2D = $MetadeA
@@ -36,11 +41,15 @@ var _emperrada: bool = false
 var _tentativas: Tween
 var _escala_a: float # Escala de cada metade fechada: a B é espelhada (-1), então não é 1 pras duas
 var _escala_b: float
+var _vista: bool = false
+var _ultimo_aviso: float = -INF
 
 func _ready() -> void:
 	travas_restantes = travas
 	_escala_a = _metade_a.scale.x
 	_escala_b = _metade_b.scale.x
+	if avisar_quando_perto:
+		_criar_sensor()
 	_led.color = COR_TRANCADA
 	if comeca_aberta:
 		_liberar_passagem()
@@ -49,8 +58,13 @@ func _ready() -> void:
 		_led.visible = false
 
 func abrir() -> void:
-	if esta_aberta or _emperrada:
+	if esta_aberta:
 		return
+	if _emperrada:
+		# Destravada na mão: para de tentar e segue como uma abertura normal
+		if _tentativas:
+			_tentativas.kill()
+		_emperrada = false
 	travas_restantes -= 1
 	if travas_restantes > 0:
 		_led.color = COR_PARCIAL
@@ -68,17 +82,20 @@ func emperrar(segundos: float, atraso: float = 0.0) -> void:
 	get_tree().create_timer(atraso, false).timeout.connect(_bater_emperrada.bind(segundos))
 
 func _bater_emperrada(segundos: float) -> void:
+	if not _emperrada: # Alguém destravou durante o atraso
+		return
 	_fechar_passagem()
 	emperrou.emit(segundos)
-	if mensagem_emperrada != "":
-		Aviso.mostrar(get_tree().current_scene, mensagem_emperrada, COR_TRANCADA, 3.0)
+	if mensagem_emperrada != "" and not avisar_quando_perto:
+		Aviso.mostrar(self, mensagem_emperrada, COR_TRANCADA, 3.0)
 	_led.visible = true
 	_led.color = COR_TRANCADA
 	var bater := create_tween()
 	bater.tween_property(_metade_a, "scale:x", _escala_a, TEMPO_BATER)
 	bater.parallel().tween_property(_metade_b, "scale:x", _escala_b, TEMPO_BATER)
 	bater.tween_callback(_tentar_abrir)
-	get_tree().create_timer(segundos, false).timeout.connect(_desemperrar)
+	if segundos > 0.0:
+		get_tree().create_timer(segundos, false).timeout.connect(_desemperrar)
 
 # Emperrada: as metades tentam abrir e voltam num tranco, com o LED piscando amarelo/vermelho
 func _tentar_abrir() -> void:
@@ -92,6 +109,8 @@ func _tentar_abrir() -> void:
 	_tentativas.tween_interval(0.5)
 
 func _desemperrar() -> void:
+	if not _emperrada: # Já foi destravada antes do tempo acabar
+		return
 	if _tentativas:
 		_tentativas.kill()
 	_emperrada = false
@@ -105,6 +124,29 @@ func _abrir_de_vez() -> void:
 	tween.tween_callback(func(): _led.visible = false)
 	tween.tween_property(_metade_a, "scale:x", 0.0, TEMPO_ABRIR)
 	tween.parallel().tween_property(_metade_b, "scale:x", 0.0, TEMPO_ABRIR)
+
+# Área em volta da porta: avisa que ela está emperrada quando o jogador chega perto
+func _criar_sensor() -> void:
+	var sensor := Area2D.new()
+	sensor.monitorable = false
+	var forma := CollisionShape2D.new()
+	var circulo := CircleShape2D.new()
+	circulo.radius = RAIO_PERTO
+	forma.shape = circulo
+	sensor.add_child(forma)
+	add_child(sensor)
+	sensor.body_entered.connect(_on_jogador_perto)
+
+func _on_jogador_perto(body: Node2D) -> void:
+	if not _emperrada or not body.is_in_group("jogador"):
+		return
+	if not _vista:
+		_vista = true
+		emperrada_vista.emit()
+	var agora := Time.get_ticks_msec() / 1000.0
+	if mensagem_emperrada != "" and agora - _ultimo_aviso >= INTERVALO_AVISO:
+		_ultimo_aviso = agora
+		Aviso.mostrar(self, mensagem_emperrada, COR_TRANCADA, 3.0)
 
 func _fechar_passagem() -> void:
 	esta_aberta = false

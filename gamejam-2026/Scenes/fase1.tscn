@@ -12216,9 +12216,9 @@ script = ExtResource("tutorial_script")
 [node name="Objetivos" type="CanvasLayer" parent="." unique_id=1707979247 node_paths=PackedStringArray("portas", "esperar")]
 script = ExtResource("objetivos_script")
 portas = [NodePath("../PortaSalaEsquerda"), NodePath("../PortaCorredor")]
-textos = "Ative o terminal da SALA DE SISTEMAS.
-Ative o terminal da ENGENHARIA.
-Saia pelo corredor NORTE!"
+textos = "Use o terminal da SALA DE SISTEMAS (direita).
+Use o terminal da ENGENHARIA (esquerda).
+Siga o corredor ao NORTE até a saída."
 esperar = NodePath("../Tutorial")
 
 [node name="Pausa" type="CanvasLayer" parent="." unique_id=1387051557]

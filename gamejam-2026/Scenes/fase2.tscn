@@ -11161,6 +11161,6 @@ mascara_visao = 1
 [node name="Objetivos" type="CanvasLayer" parent="." unique_id=1116619708 node_paths=PackedStringArray("portas")]
 script = ExtResource("f021_objetivos")
 portas = [NodePath("../Portas/Porta Direita"), NodePath("../Portas/PortaSuperior")]
-textos = "Religue as turbinas na sala da ESQUERDA.
-Aperte o botão na sala da DIREITA.
-Fuja pela porta de CIMA!"
+textos = "Religue as turbinas na sala à ESQUERDA.
+Aperte o botão na sala à DIREITA.
+Fuja pela porta ao NORTE!"

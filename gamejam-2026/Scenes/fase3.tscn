@@ -11147,6 +11147,6 @@ mensagem_despertar = "ALGO SAIU DA VENTILAÇÃO! OLHE PRA TRÁS E SEGURE O BOTÃ
 
 [node name="Objetivos" type="CanvasLayer" parent="." unique_id=376006413]
 script = ExtResource("f03_objetivos")
-textos = "Chegue à saída lá em CIMA."
+textos = "Corra pelo corredor até a saída ao NORTE."
 
 [connection signal="body_entered" from="GatilhoVent" to="Monstros/MonstroRapido" method="despertar" unbinds=1]

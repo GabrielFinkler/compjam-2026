@@ -168,7 +168,7 @@ travas = 2
 z_index = 1
 position = Vector2(496, 472)
 
-[node name="PortaEntradaLaboratorio" parent="Portas" instance=ExtResource("4_porta")]
+[node name="PortaEntradaLaboratorio" parent="Portas" unique_id=825995599 instance=ExtResource("4_porta")]
 z_index = 1
 position = Vector2(536, 560)
 rotation = 1.5707964
@@ -308,6 +308,7 @@ usar_navegacao = true
 mascara_visao = 1
 comeca_adormecido = true
 mensagem_despertar = "O ESPÉCIME ESCAPOU DO TANQUE! CORRA PRA SAÍDA!"
+atraso_despertar = 2.0
 
 [node name="SaidaFase" parent="." unique_id=2142793403 instance=ExtResource("10_saida")]
 position = Vector2(720, 40)
@@ -331,16 +332,15 @@ position_smoothing_speed = 6.0
 editor_draw_limits = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1542266608]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Objetivos" type="CanvasLayer" parent="." unique_id=1599186678 node_paths=PackedStringArray("portas")]
 script = ExtResource("12_objetivos")
 portas = [NodePath("../Portas/PortaSul"), NodePath("../Portas/PortaLaboratorio"), NodePath("../Portas/PortaSaida")]
-textos = "Conserte a máquina da COZINHA.
-Centrais dos DORMITÓRIOS: faltam {restantes}.
-Use a isca e ative o LABORATÓRIO.
-Fuja no POD DE EMERGÊNCIA, ao NORTE!"
+textos = "Conserte a máquina da COZINHA, à DIREITA.
+Ative os terminais dos DORMITÓRIOS: faltam {restantes}.
+Ative o terminal no fundo do LABORATÓRIO.
+Fuja para o POD DE EMERGÊNCIA, ao NORTE!"
 
 [node name="Pausa" type="CanvasLayer" parent="." unique_id=1809153343]
 script = ExtResource("11_pausa")

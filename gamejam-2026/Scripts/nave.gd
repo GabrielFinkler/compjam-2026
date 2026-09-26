@@ -19,6 +19,7 @@ signal energia_recarregada
 @export_range(0.0, 1.0) var proporcao_base_feixe: float = 0.35 # Largura perto do personagem, em proporção da largura final
 @export_range(0.0, 2.0) var brilho_personagem: float = 0.6 # Luz fraca própria do personagem, pra ele não sumir no escuro (a lanterna não clareia ele)
 @export_range(0.0, 1.0) var forca_sombra_personagem: float = 0.45 # Quão escura é a sombra dele no chão (0 = nenhuma)
+@export_flags_2d_physics var mascara_feixe: int = 1 # Camadas que barram o feixe do foco (paredes e portas)
 @export_range(0.0, 1.0) var limiar_energia_baixa: float = 0.3 # Abaixo dessa fração da energia, o personagem vai apagando e a lanterna falha
 
 const TAMANHO_TEXTURA_FEIXE := Vector2i(256, 32)
@@ -153,8 +154,9 @@ func recarregar_energia() -> void:
 	energia_atual = energia_maxima
 	energia_recarregada.emit()
 
-# O feixe é um trapézio à frente da nave: estreito na base, largura cheia no fim do alcance
-func esta_no_feixe_foco(ponto_global: Vector2, margem: float = 0.0) -> bool:
+# O feixe é um trapézio à frente da nave: estreito na base, largura cheia no fim do alcance.
+# "excluir": corpos que não barram o raio (o próprio monstro que está perguntando)
+func esta_no_feixe_foco(ponto_global: Vector2, margem: float = 0.0, excluir: Array[RID] = []) -> bool:
 	if fator_foco < LIMIAR_FOCO_CONGELA:
 		return false
 	var p := to_local(ponto_global)
@@ -162,7 +164,14 @@ func esta_no_feixe_foco(ponto_global: Vector2, margem: float = 0.0) -> bool:
 		return false
 	var t := clampf(p.x / _alcance_atual, 0.0, 1.0)
 	var meia_largura := largura_feixe_foco / 2.0 * lerpf(proporcao_base_feixe, 1.0, t)
-	return absf(p.y) <= meia_largura + margem
+	if absf(p.y) > meia_largura + margem:
+		return false
+	# A luz não atravessa parede: sem isso o foco congelava monstros do outro lado
+	var consulta := PhysicsRayQueryParameters2D.create(global_position, ponto_global, mascara_feixe)
+	var excluidos: Array[RID] = [get_rid()]
+	excluidos.append_array(excluir)
+	consulta.exclude = excluidos
+	return get_world_2d().direct_space_state.intersect_ray(consulta).is_empty()
 
 func morrer() -> void:
 	# Dois monstros encostando no mesmo frame não podem abrir duas telas de morte
