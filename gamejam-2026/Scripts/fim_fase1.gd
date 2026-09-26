@@ -1,5 +1,5 @@
 extends Control
-## Tela de fim de fase. Os textos ficam no Inspector: fim_fase1.tscn e fim_fase2.tscn
+## Tela de fim (de fase ou do jogo). Os textos ficam no Inspector de cada cena (ex.: fim_jogo.tscn)
 ## usam este mesmo script.
 
 const CAMINHO_MENU := "res://Scenes/menu_principal.tscn"

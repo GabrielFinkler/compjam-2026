@@ -8,6 +8,17 @@ radius = 14.0
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_unshaded"]
 light_mode = 1
 
+[sub_resource type="Gradient" id="Gradient_brilho"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_brilho"]
+gradient = SubResource("Gradient_brilho")
+width = 64
+height = 64
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="Terminal" type="Area2D"]
 script = ExtResource("1_script")
 
@@ -15,13 +26,19 @@ script = ExtResource("1_script")
 position = Vector2(0, 16)
 shape = SubResource("CircleShape2D_alcance")
 
+[node name="Brilho" type="PointLight2D" parent="."]
+energy = 0.0
+texture = SubResource("GradientTexture2D_brilho")
+texture_scale = 0.7
+
 [node name="Led" type="ColorRect" parent="."]
 z_index = 5
 material = SubResource("CanvasItemMaterial_unshaded")
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 1.0
-offset_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+pivot_offset = Vector2(2, 2)
 mouse_filter = 2
 
 [node name="Prompt" type="Label" parent="."]

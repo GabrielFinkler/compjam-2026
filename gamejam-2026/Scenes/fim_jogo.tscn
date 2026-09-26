@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/fim_fase1.gd" id="1_script"]
+
+[node name="FimJogo" type="Control"]
+script = ExtResource("1_script")
+titulo = "VOCÊ ESCAPOU!"
+subtitulo = "O pod de emergência se solta da nave e some no espaço.\n\nFIM DE JOGO. Obrigado por jogar!"

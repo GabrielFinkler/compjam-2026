@@ -7,9 +7,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_corpo"]
 radius = 7.0
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_unshaded"]
-light_mode = 1
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_quadro0"]
 atlas = ExtResource("3_sheet")
 region = Rect2(0, 0, 16, 16)
@@ -59,8 +56,8 @@ script = ExtResource("2_cone")
 angulo_cone = 90.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 2
 texture_filter = 1
-material = SubResource("CanvasItemMaterial_unshaded")
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_personagem")
 animation = &"andar"

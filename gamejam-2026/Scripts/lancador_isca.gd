@@ -2,6 +2,7 @@ extends Node
 ## Lançador de iscas luminosas (power-up do Sinalizador). É criado pelo item e fica
 ## pendurado no jogador. [Q] ou botão direito do mouse: gasta energia da lanterna e
 ## arremessa uma isca na direção do mouse (ela para antes de atravessar paredes).
+## Uso único: cada item dá uma carga; sem cargas, o lançador (e o ícone no HUD) some.
 ## Os valores vêm do item (item_isca.gd), editáveis no Inspector da fase.
 
 const CENA_ISCA := preload("res://Scenes/isca_luminosa.tscn")
@@ -10,13 +11,12 @@ const REGIAO_ICONE := Rect2(80, 240, 16, 16) # luz_alerta
 const MARGEM_PAREDE := 6.0
 
 var custo_energia: float = 15.0
-var recarga: float = 3.0
+var cargas: int = 1
 var alcance_lancamento: float = 110.0
-var duracao_isca: float = 8.0
+var duracao_isca: float = 5.0
 var raio_atracao: float = 220.0
 
 var _jogador: CharacterBody2D
-var _tempo_recarga: float = 0.0
 var _hud: HBoxContainer
 var _texto: Label
 
@@ -32,23 +32,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		_lancar()
 
 
-func _process(delta: float) -> void:
-	_tempo_recarga = maxf(_tempo_recarga - delta, 0.0)
-	var pronto := _pode_lancar()
-	_hud.modulate.a = 1.0 if pronto else 0.35
-	_texto.text = "ISCA [Q]" if _tempo_recarga <= 0.0 else "ISCA %.0fs" % ceilf(_tempo_recarga)
+func _process(_delta: float) -> void:
+	_hud.modulate.a = 1.0 if _pode_lancar() else 0.35
+	_texto.text = "ISCA [Q]" if cargas == 1 else "ISCA x%d [Q]" % cargas
 
 
 # Nunca deixa a isca matar o jogador: precisa sobrar energia depois do custo
 func _pode_lancar() -> bool:
-	return _tempo_recarga <= 0.0 and _jogador.energia_atual > custo_energia and not _jogador.controle_bloqueado
+	return cargas > 0 and _jogador.energia_atual > custo_energia and not _jogador.controle_bloqueado
 
 
 func _lancar() -> void:
 	if not _pode_lancar():
 		return
 	_jogador.energia_atual -= custo_energia
-	_tempo_recarga = recarga
+	cargas -= 1
 
 	var origem := _jogador.global_position
 	var alvo := _jogador.get_global_mouse_position()
@@ -66,6 +64,8 @@ func _lancar() -> void:
 	get_tree().current_scene.add_child(isca)
 	isca.global_position = origem
 	isca.lancar_para(destino)
+	if cargas <= 0:
+		queue_free()
 
 
 # Ícone + texto logo abaixo da barra de energia (canto superior esquerdo)

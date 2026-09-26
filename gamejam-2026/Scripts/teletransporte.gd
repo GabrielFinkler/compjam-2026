@@ -1,7 +1,7 @@
 extends Area2D
 ## Teleporte: quando o jogador pisa, a tela brilha em ciano e o jogo vai pra cena destino.
 
-@export_file("*.tscn") var destino: String = "res://Scenes/fim_fase1.tscn"
+@export_file("*.tscn") var destino: String = "res://Scenes/fim_jogo.tscn"
 
 const TEMPO_FLASH := 0.4
 

@@ -8,7 +8,7 @@ const TEXTOS := {
 	Passo.ANDAR: "Use W A S D para andar.",
 	Passo.MIRAR: "Mova o mouse para apontar a lanterna.",
 	Passo.FOCAR: "Segure o BOTÃO ESQUERDO do mouse para focar a luz: ela vai mais longe e congela os aliens, mas gasta energia bem mais rápido.",
-	Passo.RECARREGAR: "A lanterna gasta energia (barra no canto de cima) e, se ela acabar, você morre! Ache uma esfera azul e passe por cima para recarregar. Elas só aparecem quando a luz bate nelas!",
+	Passo.RECARREGAR: "A lanterna gasta energia (barra no canto de cima) e, se ela acabar, você morre! Ache um Glob (esfera azul) e passe por cima para recarregar. Elas só aparecem quando a luz bate nelas!",
 	Passo.FIM: "Pronto! Cuidado com os aliens: se eles te virem, vêm atrás de você.",
 }
 
@@ -34,8 +34,21 @@ func _ready() -> void:
 		queue_free()
 		return
 	jogador.energia_recarregada.connect(_on_energia_recarregada)
+	# Com a história do começo da fase passando (historia.gd), só começa quando ela acabar
+	var historia := get_tree().get_first_node_in_group("historia")
+	if historia and not historia.is_queued_for_deletion():
+		set_process(false)
+		historia.tree_exited.connect(_comecar, CONNECT_ONE_SHOT)
+	else:
+		_comecar()
+
+func _comecar() -> void:
+	# tree_exited também dispara quando a fase inteira é descarregada
+	if not is_inside_tree():
+		return
 	_criar_interface()
 	_mostrar_passo(Passo.ANDAR)
+	set_process(true)
 
 func _process(delta: float) -> void:
 	match passo_atual:

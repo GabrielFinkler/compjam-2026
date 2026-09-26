@@ -7,6 +7,9 @@ extends CanvasLayer
 ## Um objetivo por linha. (Texto simples de propósito: a lista PackedStringArray
 ## sumia quando o editor re-salvava a cena.)
 @export_multiline var textos: String = ""
+## Opcional: o painel só aparece depois que esse nó sai da cena (ex.: o Tutorial, que
+## ocupa o topo da tela e ficaria por cima do painel)
+@export var esperar: Node
 
 const COR_BORDA := Color(0.15, 0.68, 0.88)
 
@@ -14,17 +17,29 @@ var _indice: int = 0
 var _linhas: PackedStringArray
 var _painel: PanelContainer
 var _texto: Label
+var _esperando: bool = false
 
 
 func _ready() -> void:
 	_linhas = textos.strip_edges().split("\n", false)
 	_criar_interface()
+	# O tutorial se apaga no _ready quando já foi concluído (ex.: recarregou ao morrer)
+	if is_instance_valid(esperar) and esperar.is_inside_tree() and not esperar.is_queued_for_deletion():
+		_esperando = true
+		esperar.tree_exited.connect(_on_esperar_saiu, CONNECT_ONE_SHOT)
 	for i in portas.size():
 		var porta := portas[i]
 		porta.aberta.connect(_on_porta_aberta.bind(i))
 		if porta.has_signal("trava_liberada"):
 			porta.trava_liberada.connect(func(_restantes: int): _mostrar())
 	_mostrar()
+
+
+func _on_esperar_saiu() -> void:
+	_esperando = false
+	# Também dispara quando a fase inteira é descarregada: aí não há o que mostrar
+	if is_inside_tree():
+		_mostrar()
 
 
 func _on_porta_aberta(indice: int) -> void:
@@ -34,6 +49,10 @@ func _on_porta_aberta(indice: int) -> void:
 
 
 func _mostrar() -> void:
+	if _esperando:
+		_painel.visible = false
+		return
+	_painel.visible = true
 	if _indice >= _linhas.size():
 		_painel.visible = false
 		return
@@ -48,7 +67,8 @@ func _mostrar() -> void:
 func _criar_interface() -> void:
 	_painel = PanelContainer.new()
 	_painel.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	# Não encosta no HUD do canto superior esquerdo (vai até x=105)
+	# Não encosta no HUD do canto superior esquerdo (vai até x=105). Com a fonte de 6 px cabem
+	# ~26 letras por linha: escreva objetivos curtos, de no máximo 2 linhas
 	_painel.offset_left = -176
 	_painel.offset_right = -6
 	_painel.offset_top = 6
@@ -58,11 +78,14 @@ func _criar_interface() -> void:
 	estilo.border_color = COR_BORDA
 	estilo.border_width_left = 2
 	estilo.set_corner_radius_all(3)
-	estilo.set_content_margin_all(5)
+	estilo.set_content_margin_all(4)
 	_painel.add_theme_stylebox_override("panel", estilo)
 	_painel.theme = preload("res://Scripts/tema_pixel.gd").criar()
 	add_child(_painel)
 	_texto = Label.new()
 	_texto.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_texto.custom_minimum_size = Vector2(160, 0)
+	# 6 e não 8: a tela de 480x270 é esticada 4x (1080p), então a fonte sai com 24 px reais,
+	# múltiplo de 8, e continua nítida (também em 720p e 1440p)
+	_texto.add_theme_font_size_override("font_size", 6)
 	_painel.add_child(_texto)

@@ -14,10 +14,13 @@ extends CharacterBody2D
 @export var perseguir_para_sempre: bool = false ## Depois que te vê, nunca mais desiste (ignora distância e visão)
 @export var raio: float = 8.0 ## Metade do tamanho do corpo: margem pro feixe do foco pegar nele
 @export var tempo_investigacao: float = 0.0 ## Segundos procurando onde te viu por último antes de voltar à patrulha (0 = volta na hora)
+@export var velocidade_busca: float = 0.0 ## Velocidade indo checar onde te viu ou um barulho (0 = dobro da patrulha)
 @export var usar_navegacao: bool = false ## Contorna paredes e móveis em vez de andar em linha reta
+@export var voltar_pelo_rastro: bool = false ## Ao voltar pra ronda, refaz o trajeto que fez ao sair dela (bom pra fase sem navegação)
 @export_flags_2d_physics var mascara_visao: int = 0xFFFFFFFF ## Camadas que bloqueiam a visão (ex.: só paredes, pra enxergar por cima dos móveis)
 @export var comeca_adormecido: bool = false ## Fica invisível e parado até despertar() ser chamado
 @export var mensagem_despertar: String = "" ## Aviso mostrado quando desperta (vazio = nenhum)
+@export var tempo_congelado_extra: float = 0.4 ## Segundos que continua parado depois que a luz sai dele
 
 const COR_CONGELADO := Color(0.5, 0.8, 1.0)
 const Aviso := preload("res://Scripts/aviso.gd")
@@ -31,6 +34,8 @@ var _tempo_busca: float = 0.0
 var _alvo_isca: Vector2
 var _tempo_isca: float = 0.0
 var _agente: NavigationAgent2D
+var _tempo_congelado: float = 0.0
+var _rastro: PackedVector2Array = [] ## Pontos por onde passou fora da ronda, pra refazer na volta
 
 func _ready() -> void:
 	add_to_group("monstro")
@@ -65,7 +70,12 @@ func _ativar(ligado: bool) -> void:
 	$Hitbox.set_deferred("monitoring", ligado)
 
 func _physics_process(delta: float) -> void:
+	# Sob o feixe fica congelado; ao sair dele ainda leva tempo_congelado_extra pra voltar
 	if jogador and jogador.esta_no_feixe_foco(global_position, raio):
+		_tempo_congelado = tempo_congelado_extra
+	elif _tempo_congelado > 0.0:
+		_tempo_congelado -= delta
+	if _tempo_congelado > 0.0:
 		modulate = COR_CONGELADO
 		velocity = Vector2.ZERO
 		return
@@ -75,6 +85,7 @@ func _physics_process(delta: float) -> void:
 	if _tempo_isca > 0.0:
 		_tempo_isca -= delta
 		perseguindo = false
+		_registrar_rastro()
 		_ir_ate_e_esperar(_alvo_isca, velocidade_perseguicao)
 		if _tempo_isca <= 0.0:
 			_indice_ponto = _ponto_mais_proximo()
@@ -84,6 +95,7 @@ func _physics_process(delta: float) -> void:
 	if jogador and ((perseguindo and perseguir_para_sempre) or _consegue_ver(jogador, raio_atual)):
 		perseguindo = true
 		_ultima_posicao_vista = jogador.global_position
+		_registrar_rastro()
 		_mover_para(jogador.global_position, velocidade_perseguicao)
 		return
 
@@ -94,9 +106,21 @@ func _physics_process(delta: float) -> void:
 
 	if _tempo_busca > 0.0:
 		_tempo_busca -= delta
-		_ir_ate_e_esperar(_ultima_posicao_vista, velocidade_patrulha * 2.0)
+		_registrar_rastro()
+		_ir_ate_e_esperar(_ultima_posicao_vista, velocidade_busca if velocidade_busca > 0.0 else velocidade_patrulha * 2.0)
 		if _tempo_busca <= 0.0:
 			_indice_ponto = _ponto_mais_proximo()
+		return
+
+	# Volta pra ronda pelo mesmo trajeto que fez, do fim pro começo
+	if not _rastro.is_empty():
+		var alvo := _rastro[_rastro.size() - 1]
+		if global_position.distance_to(alvo) < 4.0:
+			_rastro.remove_at(_rastro.size() - 1)
+			if _rastro.is_empty():
+				_indice_ponto = _ponto_mais_proximo()
+		else:
+			_mover_para(alvo, velocidade_patrulha)
 		return
 
 	if _pontos.is_empty():
@@ -117,6 +141,12 @@ func investigar(ponto: Vector2, duracao: float) -> void:
 		return
 	_ultima_posicao_vista = ponto
 	_tempo_busca = maxf(_tempo_busca, duracao)
+
+func _registrar_rastro() -> void:
+	if not voltar_pelo_rastro:
+		return
+	if _rastro.is_empty() or global_position.distance_to(_rastro[_rastro.size() - 1]) > 8.0:
+		_rastro.append(global_position)
 
 func _mover_para(alvo: Vector2, vel: float) -> void:
 	var proximo := alvo

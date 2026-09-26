@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://crb5abgtwg5ao" path="res://Imagens/spaceship tiles.png" id="5_gi430"]
 [ext_resource type="Texture2D" uid="uid://d13q8h3mrwxae" path="res://Imagens/pisos_paredes_16px.png" id="6_ky766"]
 [ext_resource type="PackedScene" path="res://Scenes/jogador.tscn" id="7_24m2b"]
-[ext_resource type="Script" uid="uid://cvnbdh25555ik" path="res://Scripts/tutorial.gd" id="8_jho64"]
 [ext_resource type="Script" uid="uid://ckx5lyfswcfve" path="res://Scripts/tela_pausa.gd" id="9_wi011"]
 [ext_resource type="PackedScene" path="res://Scenes/duto.tscn" id="f04_duto"]
 [ext_resource type="PackedScene" path="res://Scenes/energia_coletavel.tscn" id="f04_energia"]
@@ -18,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bb13i888os1e3" path="res://Scripts/objetivos.gd" id="f04_objetivos"]
 [ext_resource type="PackedScene" path="res://Scenes/saida_fase.tscn" id="f04_saida"]
 [ext_resource type="TileSet" uid="uid://c65dr484ot0ly" path="res://Resources/tileset_fase2.tres" id="f04_tileset"]
+[ext_resource type="Script" uid="uid://ccksl1dhxanvy" path="res://Scripts/sombra_suave_tiles.gd" id="sombra_suave"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewtnh"]
 texture = ExtResource("3_bpefb")
@@ -11028,7 +11028,7 @@ _data = {
 }
 point_count = 8
 
-[node name="Fase04" type="Node2D" unique_id=79485667]
+[node name="Fase4" type="Node2D" unique_id=79485667]
 
 [node name="Fundo" type="TileMapLayer" parent="." unique_id=1929906921]
 z_index = -1
@@ -11048,6 +11048,7 @@ tile_set = ExtResource("f04_tileset")
 z_index = 1
 tile_map_data = PackedByteArray("AAAWABYAAwACAAAAAAAXABYAAwACAAIAAAAYABYAAwACAAIAAAAZABYAAwACAAIAAAAaABYAAwAAAAIAAAAhABYAAwACAAAAAAAiABYAAwACAAIAAAAjABYAAwACAAIAAAAkABYAAwACAAIAAAAlABYAAwAAAAIAAAATABcAAgAGABAAAAAVABcAAgAEABAAAAAmABcAAgADABAAAAAnABcAAQAMAAwAAAArABgAAgAFAAoAAAAsABgAAgAFAAoAAAAtABgAAgAGAAoAAAAwABgAAgABAAgAAAAzABgAAgAJAAoAAAAFABkAAQAFAAYAAAAJABkAAQAFAAYAAAAMABkAAQAFAAYAAAA1ABkAAQAFAAYAAAAZABwAAgABABMAAAAiABwAAgABABMAAAA3ABwAAgAEAAoAAAA3AB0AAgAEAAoAAAAEAB4AAQAPAAYAAAAFAB4AAQADAAgAAAATACEAAQAOAAwAAAAnACEAAQAOAAwAAAAFACIAAQAFAAYAAAAMACIAAQAFAAYAAAAIACMAAQABAAgAAAAxACMAAQAFAAYAAAArACQAAgALAAMAAAAZACUAAgABABMAAAAiACUAAgABABMAAAATACkAAgAFABAAAAAUACkAAgAEABAAAAATACoAAgAGABAAAAAnACoAAQAMAAwAAAAmACsAAgAKABAAAAAhADAAAgAJABAAAAAaADQAAQALAAwAAAA=")
 tile_set = ExtResource("f04_tileset")
+script = ExtResource("sombra_suave")
 
 [node name="Navegacao" type="NavigationRegion2D" parent="." unique_id=710500794]
 navigation_polygon = SubResource("NavigationPolygon_f04")
@@ -11109,9 +11110,6 @@ editor_draw_limits = true
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=960286041]
 color = Color(0, 0, 0, 1)
 
-[node name="Tutorial" type="CanvasLayer" parent="." unique_id=481798]
-script = ExtResource("8_jho64")
-
 [node name="Pausa" type="CanvasLayer" parent="." unique_id=911959700]
 script = ExtResource("9_wi011")
 
@@ -11137,7 +11135,7 @@ rotation = 1.5707964
 
 [node name="SaidaFase" parent="." unique_id=709094508 instance=ExtResource("f04_saida")]
 position = Vector2(480, 312)
-destino = "res://Scenes/fase2.tscn"
+destino = "res://Scenes/fase5.tscn"
 
 [node name="Interativos" type="Node2D" parent="." unique_id=1056498465]
 
@@ -11206,8 +11204,8 @@ comeca_adormecido = true
 [node name="Objetivos" type="CanvasLayer" parent="." unique_id=696439033 node_paths=PackedStringArray("portas")]
 script = ExtResource("f04_objetivos")
 portas = [NodePath("../Portas/PortaSaida")]
-textos = "Entre pela VENTILAÇÃO na sala da DIREITA e religue a energia.
-Os bichos estão soltos! Corra pra saída no alto do salão!"
+textos = "Religue a energia: VENTILAÇÃO da DIREITA.
+Bichos soltos! Corra pra saída no ALTO!"
 
 [connection signal="concluida" from="Interativos/PainelEnergia" to="Portas/PortaCelaEsquerda" method="abrir"]
 [connection signal="concluida" from="Interativos/PainelEnergia" to="Portas/PortaCelaDireita" method="abrir"]

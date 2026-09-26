@@ -11,9 +11,12 @@ extends Area2D
 const Aviso := preload("res://Scripts/aviso.gd")
 const COR_LED_ATIVO := Color(0.15, 0.68, 0.88)
 const COR_LED_USADO := Color(0.23, 1.0, 0.43)
+const ENERGIA_BRILHO := 1.4 ## Pico do brilho em volta do LED enquanto o terminal não foi usado
+const ENERGIA_BRILHO_USADO := 0.35 ## Brilho fraco e parado depois de usado: ainda aparece, mas não chama atenção
 
 @onready var _prompt: Label = $Prompt
 @onready var _led: ColorRect = $Led
+@onready var _brilho: PointLight2D = $Brilho
 
 var _jogador_perto: bool = false
 var _usado: bool = false
@@ -24,10 +27,15 @@ func _ready() -> void:
 	_prompt.text = texto_prompt
 	_prompt.visible = false
 	_led.color = COR_LED_ATIVO
-	# LED piscando pra dar pra achar o computador no escuro
+	_brilho.color = COR_LED_ATIVO
+	# LED pulsando junto com um brilho em volta, pra dar pra achar o computador no escuro
 	_pisca = create_tween().set_loops()
-	_pisca.tween_property(_led, "modulate:a", 0.2, 0.5)
-	_pisca.tween_property(_led, "modulate:a", 1.0, 0.5)
+	_pisca.tween_property(_led, "modulate:a", 1.0, 0.35).set_trans(Tween.TRANS_SINE)
+	_pisca.parallel().tween_property(_led, "scale", Vector2(1.5, 1.5), 0.35).set_trans(Tween.TRANS_SINE)
+	_pisca.parallel().tween_property(_brilho, "energy", ENERGIA_BRILHO, 0.35).set_trans(Tween.TRANS_SINE)
+	_pisca.tween_property(_led, "modulate:a", 0.4, 0.55).set_trans(Tween.TRANS_SINE)
+	_pisca.parallel().tween_property(_led, "scale", Vector2.ONE, 0.55).set_trans(Tween.TRANS_SINE)
+	_pisca.parallel().tween_property(_brilho, "energy", 0.2, 0.55).set_trans(Tween.TRANS_SINE)
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
@@ -41,7 +49,10 @@ func usar() -> void:
 	_prompt.visible = false
 	_pisca.kill()
 	_led.modulate.a = 1.0
+	_led.scale = Vector2.ONE
 	_led.color = COR_LED_USADO
+	_brilho.color = COR_LED_USADO
+	_brilho.energy = ENERGIA_BRILHO_USADO
 	var texto := mensagem
 	if porta and porta.has_method("abrir"):
 		porta.abrir()
