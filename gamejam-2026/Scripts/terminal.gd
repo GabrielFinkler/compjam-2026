@@ -5,11 +5,12 @@ extends Area2D
 
 @export var porta: Node ## Porta que este computador libera
 @export var mensagem: String = "PORTA LIBERADA!"
+@export var mensagem_parcial: String = "TRAVA LIBERADA! FALTAM %d." ## Usada quando a porta tem mais travas; %d = quantas faltam
 @export var texto_prompt: String = "[E] ACESSAR"
 
+const Aviso := preload("res://Scripts/aviso.gd")
 const COR_LED_ATIVO := Color(0.15, 0.68, 0.88)
 const COR_LED_USADO := Color(0.23, 1.0, 0.43)
-const TEMPO_AVISO := 3.0
 
 @onready var _prompt: Label = $Prompt
 @onready var _led: ColorRect = $Led
@@ -41,9 +42,13 @@ func usar() -> void:
 	_pisca.kill()
 	_led.modulate.a = 1.0
 	_led.color = COR_LED_USADO
+	var texto := mensagem
 	if porta and porta.has_method("abrir"):
 		porta.abrir()
-	_mostrar_aviso()
+		# Porta com várias travas (ex.: precisa de dois terminais): avisa quantas faltam
+		if "travas_restantes" in porta and porta.travas_restantes > 0:
+			texto = mensagem_parcial % porta.travas_restantes
+	Aviso.mostrar(self, texto, COR_LED_ATIVO)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("jogador"):
@@ -54,30 +59,3 @@ func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("jogador"):
 		_jogador_perto = false
 		_prompt.visible = false
-
-func _mostrar_aviso() -> void:
-	var camada := CanvasLayer.new()
-	add_child(camada)
-	var centro := CenterContainer.new()
-	camada.add_child(centro)
-	centro.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
-	centro.offset_top = -40
-	centro.offset_bottom = -12
-	var painel := PanelContainer.new()
-	var estilo := StyleBoxFlat.new()
-	estilo.bg_color = Color(0, 0, 0, 0.75)
-	estilo.border_color = COR_LED_ATIVO
-	estilo.set_border_width_all(1)
-	estilo.set_corner_radius_all(3)
-	estilo.set_content_margin_all(6)
-	painel.add_theme_stylebox_override("panel", estilo)
-	painel.theme = preload("res://Scripts/tema_pixel.gd").criar()
-	centro.add_child(painel)
-	var texto := Label.new()
-	texto.text = mensagem
-	texto.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	painel.add_child(texto)
-	var tween := create_tween()
-	tween.tween_interval(TEMPO_AVISO)
-	tween.tween_property(painel, "modulate:a", 0.0, 0.5)
-	tween.tween_callback(camada.queue_free)

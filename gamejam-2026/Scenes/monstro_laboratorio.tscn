@@ -1,0 +1,59 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Scenes/monstro.tscn" id="1_monstro_base"]
+[ext_resource type="Texture2D" path="res://Imagens/monstro_laboratorio_spritesheet.png" id="2_sheet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0"]
+atlas = ExtResource("2_sheet")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1"]
+atlas = ExtResource("2_sheet")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2"]
+atlas = ExtResource("2_sheet")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3"]
+atlas = ExtResource("2_sheet")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4"]
+atlas = ExtResource("2_sheet")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5"]
+atlas = ExtResource("2_sheet")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_laboratorio"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5")
+}],
+"loop": true,
+"name": &"respirar",
+"speed": 10.0
+}]
+
+[node name="MonstroLaboratorio" instance=ExtResource("1_monstro_base")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_laboratorio")

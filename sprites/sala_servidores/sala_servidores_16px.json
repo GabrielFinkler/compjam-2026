@@ -1,0 +1,244 @@
+{
+ "image": "sala_servidores_16px.png",
+ "tile": 16,
+ "sprites": [
+  {
+   "name": "rack_servidor_verde",
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "rack_servidor_vermelho",
+   "x": 16,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "gabinete_ventoinhas",
+   "x": 32,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "rack_servidor_laranja",
+   "x": 48,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "rack_servidor_azul",
+   "x": 64,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "gabinete_pequeno",
+   "x": 80,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "painel_piso_tecnico",
+   "x": 0,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "terminal_codigo",
+   "x": 16,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "nucleo_energia",
+   "x": 32,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "switch_rede",
+   "x": 48,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "sensor_circular",
+   "x": 64,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "conector_cruz",
+   "x": 80,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "cabos_horizontal",
+   "x": 0,
+   "y": 32,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "painel_leds",
+   "x": 16,
+   "y": 32,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "hub_central",
+   "x": 32,
+   "y": 32,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "painel_matriz_leds",
+   "x": 48,
+   "y": 32,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "ventilador_grande",
+   "x": 64,
+   "y": 32,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "grade_ventilacao",
+   "x": 80,
+   "y": 32,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "quadro_disjuntores",
+   "x": 0,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "rack_antena",
+   "x": 16,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "conexao_cruz_azul",
+   "x": 32,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "botao_alarme",
+   "x": 48,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "estacao_monitores",
+   "x": 64,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "terminal_teclado",
+   "x": 80,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "monitor_grafico",
+   "x": 0,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "painel_4_ventoinhas",
+   "x": 16,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "holograma_dados",
+   "x": 32,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "sensor_laser",
+   "x": 48,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "piso_perfurado",
+   "x": 64,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_cabos",
+   "x": 80,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "piso_grade",
+   "x": 0,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "valvula_vermelha",
+   "x": 16,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "porta_dupla",
+   "x": 32,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "painel_controle",
+   "x": 48,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  }
+ ]
+}

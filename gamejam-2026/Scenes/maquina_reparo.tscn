@@ -1,0 +1,34 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/maquina_reparo.gd" id="1_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_alcance"]
+radius = 18.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_unshaded"]
+light_mode = 1
+
+[node name="MaquinaReparo" type="Area2D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_alcance")
+
+[node name="Led" type="ColorRect" parent="."]
+z_index = 5
+material = SubResource("CanvasItemMaterial_unshaded")
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+mouse_filter = 2
+
+[node name="Prompt" type="Label" parent="."]
+z_index = 5
+material = SubResource("CanvasItemMaterial_unshaded")
+offset_left = -48.0
+offset_top = -22.0
+offset_right = 48.0
+offset_bottom = -12.0
+horizontal_alignment = 1
+mouse_filter = 2

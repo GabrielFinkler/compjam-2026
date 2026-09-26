@@ -25,6 +25,7 @@ var energia_atual: float
 var fator_foco: float = 0.0 # 0.0 = cone espalhado, 1.0 = feixe retangular focado
 var _alcance_atual: float = 0.0
 var _morto: bool = false
+var controle_bloqueado: bool = false ## Ligado por minigames (ex.: máquina de reparo): o personagem fica parado
 
 @onready var luz: PointLight2D = $PointLight2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -81,7 +82,11 @@ func _process(delta: float) -> void:
 	
 	hud.atualizar(energia_atual, energia_maxima)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	if controle_bloqueado:
+		velocity = Vector2.ZERO
+		sprite.stop()
+		return
 	var direcao: Vector2 = Input.get_vector("mover_esquerda", "mover_direita", "mover_cima", "mover_baixo")
 	velocity = direcao * velocidade
 	look_at(get_global_mouse_position())

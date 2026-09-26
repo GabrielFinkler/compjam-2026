@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/isca_luminosa.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b4sg0aixf3qfx" path="res://Imagens/space_sprites_16px.png" id="2_sprites"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sinalizador"]
+atlas = ExtResource("2_sprites")
+region = Rect2(80, 240, 16, 16)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_unshaded"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_luz"]
+colors = PackedColorArray(1, 0.4, 0.3, 1, 1, 0.3, 0.2, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_luz"]
+gradient = SubResource("Gradient_luz")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="IscaLuminosa" type="Node2D"]
+z_index = 2
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_unshaded")
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_sinalizador")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_luz")
+texture_scale = 0.6

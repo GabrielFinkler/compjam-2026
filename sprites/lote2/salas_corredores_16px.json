@@ -1,0 +1,735 @@
+{
+ "image": "salas_corredores_16px.png",
+ "tile": 16,
+ "width": 256,
+ "height": 256,
+ "categories": [
+  "Refeitório",
+  "Cozinha",
+  "Laboratório",
+  "Banheiro",
+  "Corredores e tubulação"
+ ],
+ "sprites": [
+  {
+   "name": "mesa_4_banquetas",
+   "category": "Refeitório",
+   "x": 0,
+   "y": 0,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "mesa_redonda_4_cadeiras",
+   "category": "Refeitório",
+   "x": 32,
+   "y": 0,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "mesa_longa_bancos",
+   "category": "Refeitório",
+   "x": 64,
+   "y": 0,
+   "w": 48,
+   "h": 32
+  },
+  {
+   "name": "banco_longo",
+   "category": "Refeitório",
+   "x": 112,
+   "y": 0,
+   "w": 48,
+   "h": 16
+  },
+  {
+   "name": "cadeira_laranja",
+   "category": "Refeitório",
+   "x": 160,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "cadeira_vermelha",
+   "category": "Refeitório",
+   "x": 176,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "bandeja_comida",
+   "category": "Refeitório",
+   "x": 192,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "bandejas_pilha",
+   "category": "Refeitório",
+   "x": 208,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "pratos_copos",
+   "category": "Refeitório",
+   "x": 224,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "dispensador_bebidas",
+   "category": "Refeitório",
+   "x": 240,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "maquina_venda",
+   "category": "Refeitório",
+   "x": 0,
+   "y": 32,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "lixeira_tripla",
+   "category": "Refeitório",
+   "x": 16,
+   "y": 32,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "balcao_self_service",
+   "category": "Refeitório",
+   "x": 48,
+   "y": 32,
+   "w": 48,
+   "h": 16
+  },
+  {
+   "name": "impressora_comida",
+   "category": "Refeitório",
+   "x": 96,
+   "y": 32,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "vaso_hidroponia",
+   "category": "Refeitório",
+   "x": 112,
+   "y": 32,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "mesa_hexagonal",
+   "category": "Refeitório",
+   "x": 144,
+   "y": 32,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "fogao_industrial",
+   "category": "Cozinha",
+   "x": 0,
+   "y": 64,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "forno",
+   "category": "Cozinha",
+   "x": 32,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "pia_dupla",
+   "category": "Cozinha",
+   "x": 48,
+   "y": 64,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "bancada_corte",
+   "category": "Cozinha",
+   "x": 80,
+   "y": 64,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "geladeira_industrial",
+   "category": "Cozinha",
+   "x": 112,
+   "y": 64,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "freezer_horizontal",
+   "category": "Cozinha",
+   "x": 144,
+   "y": 64,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "panela",
+   "category": "Cozinha",
+   "x": 176,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "frigideira",
+   "category": "Cozinha",
+   "x": 192,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "micro_ondas",
+   "category": "Cozinha",
+   "x": 208,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "lava_loucas",
+   "category": "Cozinha",
+   "x": 224,
+   "y": 64,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "prateleira_mantimentos",
+   "category": "Cozinha",
+   "x": 0,
+   "y": 80,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "sacos_suprimentos",
+   "category": "Cozinha",
+   "x": 32,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "barril_agua",
+   "category": "Cozinha",
+   "x": 48,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "suporte_facas",
+   "category": "Cozinha",
+   "x": 64,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "caixote_legumes",
+   "category": "Cozinha",
+   "x": 80,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "bancada_pia_lab",
+   "category": "Laboratório",
+   "x": 0,
+   "y": 96,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "capela_exaustao",
+   "category": "Laboratório",
+   "x": 32,
+   "y": 96,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "centrifuga",
+   "category": "Laboratório",
+   "x": 64,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tanque_especime_grande",
+   "category": "Laboratório",
+   "x": 80,
+   "y": 96,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "incubadora",
+   "category": "Laboratório",
+   "x": 112,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "computador_analise",
+   "category": "Laboratório",
+   "x": 128,
+   "y": 96,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "estante_amostras",
+   "category": "Laboratório",
+   "x": 160,
+   "y": 96,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "maca_lab",
+   "category": "Laboratório",
+   "x": 192,
+   "y": 96,
+   "w": 16,
+   "h": 32
+  },
+  {
+   "name": "scanner_corpo",
+   "category": "Laboratório",
+   "x": 208,
+   "y": 96,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "lixo_biologico",
+   "category": "Laboratório",
+   "x": 240,
+   "y": 96,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "chuveiro_emergencia",
+   "category": "Laboratório",
+   "x": 0,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "carrinho_lab",
+   "category": "Laboratório",
+   "x": 16,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "placas_petri",
+   "category": "Laboratório",
+   "x": 32,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tanque_nitrogenio",
+   "category": "Laboratório",
+   "x": 48,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "amostra_alienigena",
+   "category": "Laboratório",
+   "x": 64,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "microscopio_eletronico",
+   "category": "Laboratório",
+   "x": 80,
+   "y": 128,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "cabine_vaso",
+   "category": "Banheiro",
+   "x": 0,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "mictorio",
+   "category": "Banheiro",
+   "x": 16,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "pia_dupla_banheiro",
+   "category": "Banheiro",
+   "x": 32,
+   "y": 144,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "espelho",
+   "category": "Banheiro",
+   "x": 64,
+   "y": 144,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "box_chuveiro",
+   "category": "Banheiro",
+   "x": 96,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "cabine_descontaminacao",
+   "category": "Banheiro",
+   "x": 112,
+   "y": 144,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "secador_maos",
+   "category": "Banheiro",
+   "x": 144,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "toalheiro",
+   "category": "Banheiro",
+   "x": 160,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tapete_banheiro",
+   "category": "Banheiro",
+   "x": 176,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "ralo_piso",
+   "category": "Banheiro",
+   "x": 192,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "lixeira_banheiro",
+   "category": "Banheiro",
+   "x": 208,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "armario_espelho",
+   "category": "Banheiro",
+   "x": 224,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "divisoria_h",
+   "category": "Banheiro",
+   "x": 240,
+   "y": 144,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "divisoria_v",
+   "category": "Banheiro",
+   "x": 0,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "divisoria_canto",
+   "category": "Banheiro",
+   "x": 16,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "piso_azulejo_branco",
+   "category": "Banheiro",
+   "x": 32,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "piso_azulejo_azul",
+   "category": "Banheiro",
+   "x": 48,
+   "y": 176,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "grade_tubos_h",
+   "category": "Corredores e tubulação",
+   "x": 0,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "grade_tubos_v",
+   "category": "Corredores e tubulação",
+   "x": 16,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "canaleta_cabos_h",
+   "category": "Corredores e tubulação",
+   "x": 32,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "canaleta_cabos_v",
+   "category": "Corredores e tubulação",
+   "x": 48,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "manometro",
+   "category": "Corredores e tubulação",
+   "x": 64,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "vapor",
+   "category": "Corredores e tubulação",
+   "x": 80,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "poca_oleo",
+   "category": "Corredores e tubulação",
+   "x": 96,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "poca_agua",
+   "category": "Corredores e tubulação",
+   "x": 112,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "gosma_alienigena",
+   "category": "Corredores e tubulação",
+   "x": 128,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "marca_queimada",
+   "category": "Corredores e tubulação",
+   "x": 144,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "faiscas",
+   "category": "Corredores e tubulação",
+   "x": 160,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "caixa_juncao",
+   "category": "Corredores e tubulação",
+   "x": 176,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tanque_pressao",
+   "category": "Corredores e tubulação",
+   "x": 192,
+   "y": 192,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "bomba_hidraulica",
+   "category": "Corredores e tubulação",
+   "x": 224,
+   "y": 192,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "luz_emergencia_chao",
+   "category": "Corredores e tubulação",
+   "x": 0,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "faixa_amarela_h",
+   "category": "Corredores e tubulação",
+   "x": 16,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "faixa_amarela_v",
+   "category": "Corredores e tubulação",
+   "x": 32,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "faixa_perigo_h",
+   "category": "Corredores e tubulação",
+   "x": 48,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "seta_chao_verde",
+   "category": "Corredores e tubulação",
+   "x": 64,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "escotilha_aberta",
+   "category": "Corredores e tubulação",
+   "x": 80,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "anteparo_h",
+   "category": "Corredores e tubulação",
+   "x": 96,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "anteparo_v",
+   "category": "Corredores e tubulação",
+   "x": 112,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "cabos_soltos",
+   "category": "Corredores e tubulação",
+   "x": 128,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "destrocos",
+   "category": "Corredores e tubulação",
+   "x": 144,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "duto_ventilacao_grande",
+   "category": "Corredores e tubulação",
+   "x": 160,
+   "y": 224,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "luz_corredor_teto",
+   "category": "Corredores e tubulação",
+   "x": 192,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  }
+ ]
+}

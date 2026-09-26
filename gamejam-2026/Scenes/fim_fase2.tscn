@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/fim_fase1.gd" id="1_script"]
+
+[node name="FimFase2" type="Control"]
+script = ExtResource("1_script")
+titulo = "FASE 2 CONCLUÍDA!"
+subtitulo = "Você escapou do módulo habitacional... mas a nave ainda guarda segredos."

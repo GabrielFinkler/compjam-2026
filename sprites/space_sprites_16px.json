@@ -1,0 +1,1030 @@
+{
+ "image": "space_sprites_16px.png",
+ "tile": 16,
+ "width": 256,
+ "height": 352,
+ "categories": [
+  "Sofás, mesas e cadeiras",
+  "Camas e armários",
+  "Cozinha e banheiro",
+  "Escritório e laboratório",
+  "Ponte de comando",
+  "Engenharia e energia",
+  "Portas e acessos",
+  "Ventilação e tubos",
+  "Painéis e iluminação",
+  "Lixeiras, caixas e misc.",
+  "Paredes e decoração",
+  "Piso e tapetes"
+ ],
+ "sprites": [
+  {
+   "name": "sofa_3_cinza",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 0,
+   "y": 0,
+   "w": 48,
+   "h": 16
+  },
+  {
+   "name": "sofa_3_azul",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 48,
+   "y": 0,
+   "w": 48,
+   "h": 16
+  },
+  {
+   "name": "sofa_2_cinza",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 96,
+   "y": 0,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "sofa_2_branco",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 128,
+   "y": 0,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "poltrona_cinza",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 160,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "poltrona_azul",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 176,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "poltrona_vermelha",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 192,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "cadeira",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 208,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "cadeira_azul",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 224,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "banqueta",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 240,
+   "y": 0,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "mesa_retangular",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 0,
+   "y": 16,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "mesa_quadrada",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 32,
+   "y": 16,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "mesa_redonda",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 48,
+   "y": 16,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "mesa_jantar_6",
+   "category": "Sofás, mesas e cadeiras",
+   "x": 80,
+   "y": 16,
+   "w": 48,
+   "h": 32
+  },
+  {
+   "name": "cama_solteiro_azul",
+   "category": "Camas e armários",
+   "x": 0,
+   "y": 48,
+   "w": 16,
+   "h": 32
+  },
+  {
+   "name": "cama_solteiro_cinza",
+   "category": "Camas e armários",
+   "x": 16,
+   "y": 48,
+   "w": 16,
+   "h": 32
+  },
+  {
+   "name": "cama_solteiro_verde",
+   "category": "Camas e armários",
+   "x": 32,
+   "y": 48,
+   "w": 16,
+   "h": 32
+  },
+  {
+   "name": "cama_casal_azul",
+   "category": "Camas e armários",
+   "x": 48,
+   "y": 48,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "cama_casal_cinza",
+   "category": "Camas e armários",
+   "x": 80,
+   "y": 48,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "armario_1",
+   "category": "Camas e armários",
+   "x": 112,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "armario_azul",
+   "category": "Camas e armários",
+   "x": 128,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "guarda_roupa",
+   "category": "Camas e armários",
+   "x": 144,
+   "y": 48,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "estante",
+   "category": "Camas e armários",
+   "x": 176,
+   "y": 48,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "armario_madeira",
+   "category": "Camas e armários",
+   "x": 208,
+   "y": 48,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "balcao",
+   "category": "Cozinha e banheiro",
+   "x": 0,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "balcao_pia",
+   "category": "Cozinha e banheiro",
+   "x": 16,
+   "y": 80,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "fogao",
+   "category": "Cozinha e banheiro",
+   "x": 48,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "geladeira",
+   "category": "Cozinha e banheiro",
+   "x": 64,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "geladeira_dupla",
+   "category": "Cozinha e banheiro",
+   "x": 80,
+   "y": 80,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "lixo_cozinha",
+   "category": "Cozinha e banheiro",
+   "x": 112,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "vaso_sanitario",
+   "category": "Cozinha e banheiro",
+   "x": 128,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "pia_banheiro",
+   "category": "Cozinha e banheiro",
+   "x": 144,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "chuveiro",
+   "category": "Cozinha e banheiro",
+   "x": 160,
+   "y": 80,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "banheira",
+   "category": "Cozinha e banheiro",
+   "x": 176,
+   "y": 80,
+   "w": 16,
+   "h": 32
+  },
+  {
+   "name": "mesa_refeitorio",
+   "category": "Cozinha e banheiro",
+   "x": 192,
+   "y": 80,
+   "w": 48,
+   "h": 32
+  },
+  {
+   "name": "mesa_computador",
+   "category": "Escritório e laboratório",
+   "x": 0,
+   "y": 112,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "mesa_dois_monitores",
+   "category": "Escritório e laboratório",
+   "x": 32,
+   "y": 112,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "cadeira_escritorio",
+   "category": "Escritório e laboratório",
+   "x": 64,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "bancada_lab",
+   "category": "Escritório e laboratório",
+   "x": 80,
+   "y": 112,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "microscopio",
+   "category": "Escritório e laboratório",
+   "x": 112,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "suporte_tubos",
+   "category": "Escritório e laboratório",
+   "x": 128,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tanque_criogenico",
+   "category": "Escritório e laboratório",
+   "x": 144,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tanque_especime",
+   "category": "Escritório e laboratório",
+   "x": 160,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "terminal_pesquisa",
+   "category": "Escritório e laboratório",
+   "x": 176,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "arquivo",
+   "category": "Escritório e laboratório",
+   "x": 192,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "cadeira_capitao",
+   "category": "Ponte de comando",
+   "x": 0,
+   "y": 128,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "console_curvo",
+   "category": "Ponte de comando",
+   "x": 16,
+   "y": 128,
+   "w": 48,
+   "h": 16
+  },
+  {
+   "name": "console_navegacao",
+   "category": "Ponte de comando",
+   "x": 64,
+   "y": 128,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "radar",
+   "category": "Ponte de comando",
+   "x": 96,
+   "y": 128,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "mesa_holografica",
+   "category": "Ponte de comando",
+   "x": 128,
+   "y": 128,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "painel_tatico",
+   "category": "Ponte de comando",
+   "x": 160,
+   "y": 128,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "reator",
+   "category": "Engenharia e energia",
+   "x": 0,
+   "y": 160,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "gerador",
+   "category": "Engenharia e energia",
+   "x": 32,
+   "y": 160,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "bateria",
+   "category": "Engenharia e energia",
+   "x": 64,
+   "y": 160,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "servidor",
+   "category": "Engenharia e energia",
+   "x": 80,
+   "y": 160,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "quadro_energia",
+   "category": "Engenharia e energia",
+   "x": 96,
+   "y": 160,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "motor",
+   "category": "Engenharia e energia",
+   "x": 112,
+   "y": 160,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "caixa_eletrica",
+   "category": "Engenharia e energia",
+   "x": 144,
+   "y": 160,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "porta_h_fechada",
+   "category": "Portas e acessos",
+   "x": 0,
+   "y": 192,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "porta_h_aberta",
+   "category": "Portas e acessos",
+   "x": 32,
+   "y": 192,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "porta_v_fechada",
+   "category": "Portas e acessos",
+   "x": 64,
+   "y": 192,
+   "w": 16,
+   "h": 32
+  },
+  {
+   "name": "porta_v_aberta",
+   "category": "Portas e acessos",
+   "x": 80,
+   "y": 192,
+   "w": 16,
+   "h": 32
+  },
+  {
+   "name": "eclusa",
+   "category": "Portas e acessos",
+   "x": 96,
+   "y": 192,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "escotilha_piso",
+   "category": "Portas e acessos",
+   "x": 128,
+   "y": 192,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "porta_seguranca_h",
+   "category": "Portas e acessos",
+   "x": 144,
+   "y": 192,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "ventilador",
+   "category": "Ventilação e tubos",
+   "x": 0,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "grade_ventilacao",
+   "category": "Ventilação e tubos",
+   "x": 16,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "grade_ventilacao_x",
+   "category": "Ventilação e tubos",
+   "x": 32,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tubo_h",
+   "category": "Ventilação e tubos",
+   "x": 48,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tubo_v",
+   "category": "Ventilação e tubos",
+   "x": 64,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tubo_curva_se",
+   "category": "Ventilação e tubos",
+   "x": 80,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tubo_curva_sw",
+   "category": "Ventilação e tubos",
+   "x": 96,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tubo_curva_ne",
+   "category": "Ventilação e tubos",
+   "x": 112,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tubo_curva_nw",
+   "category": "Ventilação e tubos",
+   "x": 128,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tubo_t",
+   "category": "Ventilação e tubos",
+   "x": 144,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tubo_cruz",
+   "category": "Ventilação e tubos",
+   "x": 160,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tubo_valvula",
+   "category": "Ventilação e tubos",
+   "x": 176,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "duto_h",
+   "category": "Ventilação e tubos",
+   "x": 192,
+   "y": 224,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "terminal_verde",
+   "category": "Painéis e iluminação",
+   "x": 0,
+   "y": 240,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "painel_controle",
+   "category": "Painéis e iluminação",
+   "x": 16,
+   "y": 240,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "luz_tira",
+   "category": "Painéis e iluminação",
+   "x": 48,
+   "y": 240,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "luz_redonda",
+   "category": "Painéis e iluminação",
+   "x": 64,
+   "y": 240,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "luz_alerta",
+   "category": "Painéis e iluminação",
+   "x": 80,
+   "y": 240,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "luz_piso",
+   "category": "Painéis e iluminação",
+   "x": 96,
+   "y": 240,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "painel_parede",
+   "category": "Painéis e iluminação",
+   "x": 112,
+   "y": 240,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "lixeira",
+   "category": "Lixeiras, caixas e misc.",
+   "x": 0,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "lixeira_reciclavel",
+   "category": "Lixeiras, caixas e misc.",
+   "x": 16,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "lixeira_azul",
+   "category": "Lixeiras, caixas e misc.",
+   "x": 32,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "barril_vermelho",
+   "category": "Lixeiras, caixas e misc.",
+   "x": 48,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "caixa_metal",
+   "category": "Lixeiras, caixas e misc.",
+   "x": 64,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "caixa_madeira",
+   "category": "Lixeiras, caixas e misc.",
+   "x": 80,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "caixa_grande",
+   "category": "Lixeiras, caixas e misc.",
+   "x": 96,
+   "y": 256,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "kit_medico",
+   "category": "Lixeiras, caixas e misc.",
+   "x": 128,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "extintor",
+   "category": "Lixeiras, caixas e misc.",
+   "x": 144,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "caixa_ferramentas",
+   "category": "Lixeiras, caixas e misc.",
+   "x": 160,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "cone_sinalizacao",
+   "category": "Lixeiras, caixas e misc.",
+   "x": 176,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "cabo_enrolado",
+   "category": "Lixeiras, caixas e misc.",
+   "x": 192,
+   "y": 256,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_cheia",
+   "category": "Paredes e decoração",
+   "x": 0,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_borda_n",
+   "category": "Paredes e decoração",
+   "x": 16,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_borda_s",
+   "category": "Paredes e decoração",
+   "x": 32,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_borda_o",
+   "category": "Paredes e decoração",
+   "x": 48,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_borda_l",
+   "category": "Paredes e decoração",
+   "x": 64,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_borda_no",
+   "category": "Paredes e decoração",
+   "x": 80,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_borda_ne",
+   "category": "Paredes e decoração",
+   "x": 96,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_borda_so",
+   "category": "Paredes e decoração",
+   "x": 112,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_borda_se",
+   "category": "Paredes e decoração",
+   "x": 128,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_canto_int_no",
+   "category": "Paredes e decoração",
+   "x": 144,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_canto_int_ne",
+   "category": "Paredes e decoração",
+   "x": 160,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_canto_int_so",
+   "category": "Paredes e decoração",
+   "x": 176,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "parede_canto_int_se",
+   "category": "Paredes e decoração",
+   "x": 192,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "janela_espaco",
+   "category": "Paredes e decoração",
+   "x": 208,
+   "y": 288,
+   "w": 32,
+   "h": 16
+  },
+  {
+   "name": "planta",
+   "category": "Paredes e decoração",
+   "x": 240,
+   "y": 288,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "planta_pequena",
+   "category": "Paredes e decoração",
+   "x": 0,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "pilar",
+   "category": "Paredes e decoração",
+   "x": 16,
+   "y": 304,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "piso_placa",
+   "category": "Piso e tapetes",
+   "x": 0,
+   "y": 320,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "piso_placa_b",
+   "category": "Piso e tapetes",
+   "x": 16,
+   "y": 320,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "piso_placa_lisa",
+   "category": "Piso e tapetes",
+   "x": 32,
+   "y": 320,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "piso_grade",
+   "category": "Piso e tapetes",
+   "x": 48,
+   "y": 320,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "piso_perigo",
+   "category": "Piso e tapetes",
+   "x": 64,
+   "y": 320,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "piso_escuro",
+   "category": "Piso e tapetes",
+   "x": 80,
+   "y": 320,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "piso_seta",
+   "category": "Piso e tapetes",
+   "x": 96,
+   "y": 320,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "piso_ralo",
+   "category": "Piso e tapetes",
+   "x": 112,
+   "y": 320,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "carpete_azul",
+   "category": "Piso e tapetes",
+   "x": 128,
+   "y": 320,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "carpete_cinza",
+   "category": "Piso e tapetes",
+   "x": 144,
+   "y": 320,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "name": "tapete_vermelho",
+   "category": "Piso e tapetes",
+   "x": 160,
+   "y": 320,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "name": "tapete_azul",
+   "category": "Piso e tapetes",
+   "x": 192,
+   "y": 320,
+   "w": 32,
+   "h": 32
+  }
+ ]
+}

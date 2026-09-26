@@ -1,7 +1,11 @@
 extends Control
-## Tela de fim da fase 1 (provisória até existir a fase 2).
+## Tela de fim de fase. Os textos ficam no Inspector: fim_fase1.tscn e fim_fase2.tscn
+## usam este mesmo script.
 
 const CAMINHO_MENU := "res://Scenes/menu_principal.tscn"
+
+@export var titulo: String = "FASE 1 CONCLUÍDA!"
+@export_multiline var subtitulo: String = "Você escapou pela porta... por enquanto."
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -21,19 +25,19 @@ func _ready() -> void:
 	caixa.add_theme_constant_override("separation", 10)
 	centro.add_child(caixa)
 
-	var titulo := Label.new()
-	titulo.text = "FASE 1 CONCLUÍDA!"
-	titulo.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	titulo.add_theme_font_size_override("font_size", 24)
-	titulo.add_theme_color_override("font_color", Color(0.15, 0.68, 0.88))
-	titulo.add_theme_color_override("font_outline_color", Color(0, 0, 0))
-	titulo.add_theme_constant_override("outline_size", 4)
-	caixa.add_child(titulo)
+	var rotulo_titulo := Label.new()
+	rotulo_titulo.text = titulo
+	rotulo_titulo.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	rotulo_titulo.add_theme_font_size_override("font_size", 24)
+	rotulo_titulo.add_theme_color_override("font_color", Color(0.15, 0.68, 0.88))
+	rotulo_titulo.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+	rotulo_titulo.add_theme_constant_override("outline_size", 4)
+	caixa.add_child(rotulo_titulo)
 
-	var subtitulo := Label.new()
-	subtitulo.text = "Você escapou pelo teleporte... por enquanto."
-	subtitulo.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	caixa.add_child(subtitulo)
+	var rotulo_subtitulo := Label.new()
+	rotulo_subtitulo.text = subtitulo
+	rotulo_subtitulo.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	caixa.add_child(rotulo_subtitulo)
 
 	var espaco := Control.new()
 	espaco.custom_minimum_size = Vector2(0, 8)

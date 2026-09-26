@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://whorsqxejeak"
-path="res://.godot/imported/astronauta.png-66f27807abffa1cb2e505536c832d144.ctex"
+uid="uid://d0fsp6xgbo2dt"
+path="res://.godot/imported/monstro_laboratorio_spritesheet.png-c609d40d0f42aacd3d6423f392d8f8db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagens/astronauta.png"
-dest_files=["res://.godot/imported/astronauta.png-66f27807abffa1cb2e505536c832d144.ctex"]
+source_file="res://Imagens/monstro_laboratorio_spritesheet.png"
+dest_files=["res://.godot/imported/monstro_laboratorio_spritesheet.png-c609d40d0f42aacd3d6423f392d8f8db.ctex"]
 
 [params]
 
