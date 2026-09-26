@@ -13,7 +13,7 @@ const MARGEM_PAREDE := 6.0
 var custo_energia: float = 15.0
 var cargas: int = 1
 var alcance_lancamento: float = 110.0
-var duracao_isca: float = 5.0
+var duracao_isca: float = 8.0
 var raio_atracao: float = 220.0
 
 var _jogador: CharacterBody2D

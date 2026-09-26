@@ -7,7 +7,7 @@ extends Area2D
 
 @export var custo_energia: float = 15.0 ## Energia da lanterna gasta por isca
 @export var alcance_lancamento: float = 110.0 ## Distância máxima do arremesso (px)
-@export var duracao_isca: float = 5.0 ## Segundos que a isca fica acesa
+@export var duracao_isca: float = 8.0 ## Segundos que a isca fica acesa
 @export var raio_atracao: float = 220.0 ## Distância em que os monstros enxergam a isca
 @export var raio_alarme: float = 0.0 ## Ao pegar, os monstros nesse raio vêm checar o barulho (0 = silencioso)
 @export var tempo_alarme: float = 6.0 ## Segundos que eles ficam procurando no local

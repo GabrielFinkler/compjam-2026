@@ -1,7 +1,47 @@
 [gd_scene format=3]
 
 [ext_resource type="PackedScene" path="res://Scenes/monstro.tscn" id="1_monstro_base"]
+[ext_resource type="Texture2D" uid="uid://cxcugmvmd8sc8" path="res://Imagens/monstro_rapido_spritesheet.png" id="2_sheet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0"]
+atlas = ExtResource("2_sheet")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1"]
+atlas = ExtResource("2_sheet")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2"]
+atlas = ExtResource("2_sheet")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3"]
+atlas = ExtResource("2_sheet")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rapido"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3")
+}],
+"loop": true,
+"name": &"respirar",
+"speed": 10.0
+}]
 
 [node name="MonstroRapido" instance=ExtResource("1_monstro_base")]
 velocidade_perseguicao = 150.0
 perseguir_para_sempre = true
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_rapido")

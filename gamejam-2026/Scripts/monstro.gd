@@ -23,6 +23,7 @@ extends CharacterBody2D
 @export var tempo_congelado_extra: float = 0.4 ## Segundos que continua parado depois que a luz sai dele
 
 const COR_CONGELADO := Color(0.5, 0.8, 1.0)
+const VELOCIDADE_GIRO := 10.0 # Quão rápido o sprite vira pra direção em que anda
 const Aviso := preload("res://Scripts/aviso.gd")
 
 var jogador: Node2D
@@ -35,6 +36,7 @@ var _alvo_isca: Vector2
 var _tempo_isca: float = 0.0
 var _agente: NavigationAgent2D
 var _tempo_congelado: float = 0.0
+@onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 var _rastro: PackedVector2Array = [] ## Pontos por onde passou fora da ronda, pra refazer na volta
 
 func _ready() -> void:
@@ -158,6 +160,11 @@ func _mover_para(alvo: Vector2, vel: float) -> void:
 			proximo = alvo
 	velocity = global_position.direction_to(proximo) * vel
 	move_and_slide()
+	# Gira no próprio eixo pra olhar pra onde anda (o desenho olha pra cima: +90°).
+	# Só o sprite gira: colisão e hitbox continuam iguais
+	if velocity.length() > 1.0:
+		var peso := minf(VELOCIDADE_GIRO * get_physics_process_delta_time(), 1.0)
+		_sprite.rotation = lerp_angle(_sprite.rotation, velocity.angle() + PI / 2.0, peso)
 
 func _ir_ate_e_esperar(alvo: Vector2, vel: float) -> void:
 	if global_position.distance_to(alvo) > 6.0:

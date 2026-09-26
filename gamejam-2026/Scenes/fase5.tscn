@@ -168,6 +168,13 @@ travas = 2
 z_index = 1
 position = Vector2(496, 472)
 
+[node name="PortaEntradaLaboratorio" parent="Portas" instance=ExtResource("4_porta")]
+z_index = 1
+position = Vector2(536, 560)
+rotation = 1.5707964
+comeca_aberta = true
+mensagem_emperrada = "A PORTA DO LABORATÓRIO EMPERROU!"
+
 [node name="Interativos" type="Node2D" parent="." unique_id=1133707103]
 
 [node name="MaquinaCozinha" parent="Interativos" unique_id=420858468 node_paths=PackedStringArray("porta") instance=ExtResource("6_maquina")]
@@ -249,6 +256,10 @@ position = Vector2(408, 296)
 z_index = 1
 position = Vector2(536, 1160)
 
+[node name="EnergiaLaboratorio" parent="Energias" unique_id=1693046054 instance=ExtResource("7_energia")]
+z_index = 1
+position = Vector2(872, 624)
+
 [node name="Monstros" type="Node2D" parent="." unique_id=312139739]
 
 [node name="PatrulhaDormitorio" type="Path2D" parent="Monstros" unique_id=657942411]
@@ -273,12 +284,14 @@ curve = SubResource("Curve2D_MonstroLaboratorio")
 [node name="MonstroLaboratorio" parent="Monstros" unique_id=2064056974 node_paths=PackedStringArray("caminho") instance=ExtResource("17_monstro_laboratorio")]
 z_index = 3
 position = Vector2(840, 520)
+scale = Vector2(1.5, 1.5)
 collision_mask = 3
 caminho = NodePath("../PatrulhaLaboratorio")
 velocidade_patrulha = 22.0
 velocidade_perseguicao = 52.0
 raio_visao = 150.0
 raio_perseguicao = 230.0
+raio = 12.0
 tempo_investigacao = 5.0
 usar_navegacao = true
 mascara_visao = 1
@@ -318,6 +331,7 @@ position_smoothing_speed = 6.0
 editor_draw_limits = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1542266608]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Objetivos" type="CanvasLayer" parent="." unique_id=1599186678 node_paths=PackedStringArray("portas")]
@@ -332,3 +346,4 @@ Fuja no POD DE EMERGÊNCIA, ao NORTE!"
 script = ExtResource("11_pausa")
 
 [connection signal="aberta" from="Portas/PortaSaida" to="Monstros/Especime" method="despertar"]
+[connection signal="aberta" from="Portas/PortaSaida" to="Portas/PortaEntradaLaboratorio" method="emperrar" binds= [8.0, 2.0]]

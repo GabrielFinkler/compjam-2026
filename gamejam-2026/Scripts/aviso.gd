@@ -5,16 +5,20 @@ extends RefCounted
 const COR_PADRAO := Color(0.15, 0.68, 0.88)
 const TEMPO_PADRAO := 3.0
 const LARGURA_MAXIMA := 300.0 # Textos maiores quebram linha em vez de sair da tela (480px)
+const ALTURA_PILHA := 26.0 # Avisos ao mesmo tempo sobem um em cima do outro em vez de se cobrir
+const GRUPO := &"aviso_tela"
 
 ## Mostra o aviso preso em `dono`: se o dono sumir (ex.: item coletado), o aviso some junto.
 static func mostrar(dono: Node, mensagem: String, cor: Color = COR_PADRAO, tempo: float = TEMPO_PADRAO) -> void:
 	var camada := CanvasLayer.new()
+	var na_tela := dono.get_tree().get_nodes_in_group(GRUPO).size()
+	camada.add_to_group(GRUPO)
 	dono.add_child(camada)
 	var centro := CenterContainer.new()
 	camada.add_child(centro)
 	centro.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
-	centro.offset_top = -40
-	centro.offset_bottom = -12
+	centro.offset_top = -40 - na_tela * ALTURA_PILHA
+	centro.offset_bottom = -12 - na_tela * ALTURA_PILHA
 	centro.grow_vertical = Control.GROW_DIRECTION_BEGIN
 	var painel := PanelContainer.new()
 	var estilo := StyleBoxFlat.new()

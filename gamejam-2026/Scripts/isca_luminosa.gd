@@ -2,7 +2,7 @@ extends Node2D
 ## Isca luminosa lançada pelo Sinalizador: voa até o destino, acende e, enquanto brilha,
 ## chama pra si os monstros que conseguem enxergá-la. Perto do fim ela vai apagando e some.
 
-@export var duracao: float = 5.0 ## Segundos acesa
+@export var duracao: float = 8.0 ## Segundos acesa
 @export var raio_atracao: float = 220.0 ## Distância máxima em que um monstro a enxerga
 
 const TEMPO_VOO := 0.35
