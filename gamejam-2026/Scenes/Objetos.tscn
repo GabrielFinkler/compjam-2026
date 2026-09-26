@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b4sg0aixf3qfx" path="res://Imagens/space_sprites_16px.png" id="2_qgqou"]
 [ext_resource type="Texture2D" uid="uid://crnis6ggry0a0" path="res://Imagens/sala_servidores_16px.png" id="3_jkg26"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipxdr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jkg26"]
 texture = ExtResource("2_qgqou")
 0:0/0 = 0
 1:0/0 = 0
@@ -206,7 +206,7 @@ texture = ExtResource("2_qgqou")
 12:21/0 = 0
 13:21/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y03n2"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipxdr"]
 texture = ExtResource("3_jkg26")
 0:0/0 = 0
 1:0/0 = 0
@@ -244,8 +244,8 @@ texture = ExtResource("3_jkg26")
 3:5/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_o0okg"]
-sources/0 = SubResource("TileSetAtlasSource_ipxdr")
-sources/1 = SubResource("TileSetAtlasSource_y03n2")
+sources/0 = SubResource("TileSetAtlasSource_jkg26")
+sources/1 = SubResource("TileSetAtlasSource_ipxdr")
 
 [node name="Objetos" type="Node2D" unique_id=496576865]
 script = ExtResource("1_ksiu4")
