@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bv83m1kmax2q0"]
 
-[ext_resource type="Script" path="res://monstro.gd" id="1_monstro"]
+[ext_resource type="Script" path="res://Scripts/monstro.gd" id="1_monstro"]
 [ext_resource type="Texture2D" path="res://Imagens/monstro.png" id="2_tex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1"]

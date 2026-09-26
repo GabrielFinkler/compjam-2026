@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://c8m8s0k1nav01"]
 
-[ext_resource type="Script" uid="uid://clcij02m8dbo7" path="res://cenario.gd" id="1_cenario"]
-[ext_resource type="TileSet" uid="uid://cc1y88q1x4lba" path="res://tileset.tres" id="2_tileset"]
-[ext_resource type="Script" uid="uid://ypqyxrobtwcf" path="res://astronauta.gd" id="3_astro"]
+[ext_resource type="Script" uid="uid://clcij02m8dbo7" path="res://Scripts/cenario.gd" id="1_cenario"]
+[ext_resource type="TileSet" uid="uid://cc1y88q1x4lba" path="res://Resources/tileset.tres" id="2_tileset"]
+[ext_resource type="Script" uid="uid://ypqyxrobtwcf" path="res://Scripts/astronauta.gd" id="3_astro"]
 [ext_resource type="Texture2D" uid="uid://whorsqxejeak" path="res://Imagens/astronauta.png" id="4_astro_tex"]
-[ext_resource type="PackedScene" uid="uid://bv83m1kmax2q0" path="res://monstro.tscn" id="5_monstro"]
-[ext_resource type="PackedScene" uid="uid://cb3oaq7k2x1la" path="res://hud.tscn" id="6_hud"]
-[ext_resource type="Script" uid="uid://lvyukndt5c3f" path="res://interativo.gd" id="7_interativo"]
+[ext_resource type="PackedScene" uid="uid://bv83m1kmax2q0" path="res://Scenes/monstro.tscn" id="5_monstro"]
+[ext_resource type="PackedScene" uid="uid://cb3oaq7k2x1la" path="res://Scenes/hud.tscn" id="6_hud"]
+[ext_resource type="Script" uid="uid://lvyukndt5c3f" path="res://Scripts/interativo.gd" id="7_interativo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1"]
 radius = 5.0

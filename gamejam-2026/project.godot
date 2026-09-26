@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gamejam 2026"
-run/main_scene="res://cenario.tscn"
+run/main_scene="res://Scenes/cenario.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
