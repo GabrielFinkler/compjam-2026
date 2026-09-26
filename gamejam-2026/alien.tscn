@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b5s7y2o4pqw3m"]
+
+[ext_resource type="Script" uid="uid://1p1j202f741g" path="res://alien.gd" id="1_alien"]
+[ext_resource type="Texture2D" uid="uid://ckb5p55d4l744" path="res://Imagens/monstro.png" id="2_sprite"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_col"]
+radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_radial"]
+colors = PackedColorArray(1, 0.2, 0.2, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_light"]
+gradient = SubResource("Gradient_radial")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.0)
+
+[node name="Alien" type="CharacterBody2D"]
+z_index = 4
+script = ExtResource("1_alien")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_col")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sprite")
+hframes = 3
+
+[node name="LuzOlhos" type="PointLight2D" parent="."]
+color = Color(1, 0.15, 0.15, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_light")
