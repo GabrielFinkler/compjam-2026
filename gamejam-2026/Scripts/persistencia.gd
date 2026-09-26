@@ -5,7 +5,7 @@ extends Node
 
 const CAMINHO_SAVE := "user://save.json"
 const CAMINHO_CONFIG := "user://config.json"
-const PRIMEIRA_FASE := "res://Scenes/movimentação_TRACO.tscn"
+const PRIMEIRA_FASE := "res://Scenes/cenario.tscn"
 
 var volume_master: float = 1.0 # 0.0 (mudo) a 1.0 (máximo)
 var _save: Dictionary = {}

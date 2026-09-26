@@ -13,5 +13,5 @@ static func criar() -> Theme:
 	fonte.subpixel_positioning = TextServer.SUBPIXEL_POSITIONING_DISABLED
 	var tema := Theme.new()
 	tema.default_font = fonte
-	tema.default_font_size = 16
+	tema.default_font_size = 8
 	return tema

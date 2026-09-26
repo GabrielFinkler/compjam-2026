@@ -5,7 +5,7 @@ signal energia_recarregada
 # ──────────────────────────────────────────────
 # Parâmetros de Movimento
 # ──────────────────────────────────────────────
-@export var velocidade: float = 220.0
+@export var velocidade: float = 60.0
 
 # ──────────────────────────────────────────────
 # Parâmetros de Energia e Luz
@@ -13,9 +13,9 @@ signal energia_recarregada
 @export var energia_maxima: float = 100.0
 @export var consumo_por_segundo: float = 2.0
 @export var consumo_foco_por_seg: float = 8.0 # Gasta 4x mais no modo foco!
-@export var alcance_luz_maximo: float = 400.0
-@export var alcance_luz_minimo: float = 50.0
-@export var largura_feixe_foco: float = 40.0 # Largura (px) do feixe do modo foco, no fim do alcance
+@export var alcance_luz_maximo: float = 120.0
+@export var alcance_luz_minimo: float = 32.0
+@export var largura_feixe_foco: float = 14.0 # Largura (px) do feixe do modo foco, no fim do alcance
 @export_range(0.0, 1.0) var proporcao_base_feixe: float = 0.35 # Largura perto do personagem, em proporção da largura final
 
 const TAMANHO_TEXTURA_FEIXE := Vector2i(256, 32)

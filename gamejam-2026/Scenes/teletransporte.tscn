@@ -1,0 +1,74 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/teletransporte.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Imagens/teleporte_spritesheet.png" id="2_sheet"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pad"]
+radius = 10.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_unshaded"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0"]
+atlas = ExtResource("2_sheet")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1"]
+atlas = ExtResource("2_sheet")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2"]
+atlas = ExtResource("2_sheet")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3"]
+atlas = ExtResource("2_sheet")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_teleporte"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3")
+}],
+"loop": 1,
+"name": &"pulsar",
+"speed": 6.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_brilho"]
+colors = PackedColorArray(0.4, 0.9, 1, 1, 0.4, 0.9, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_brilho"]
+gradient = SubResource("Gradient_brilho")
+width = 96
+height = 96
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Teletransporte" type="Area2D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pad")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_unshaded")
+sprite_frames = SubResource("SpriteFrames_teleporte")
+animation = &"pulsar"
+
+[node name="Brilho" type="PointLight2D" parent="."]
+energy = 0.8
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_brilho")

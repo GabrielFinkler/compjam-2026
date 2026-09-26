@@ -1,0 +1,66 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://ic4adcvkaqj3" path="res://Scripts/nave.gd" id="1_nave"]
+[ext_resource type="Script" uid="uid://cr1a0fnesfn4x" path="res://Scripts/cone_light_2d.gd" id="2_cone"]
+[ext_resource type="Texture2D" uid="uid://bug3bbpmrvsll" path="res://Imagens/personagem_spritesheet.png" id="3_sheet"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_corpo"]
+radius = 7.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_unshaded"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quadro0"]
+atlas = ExtResource("3_sheet")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quadro1"]
+atlas = ExtResource("3_sheet")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quadro2"]
+atlas = ExtResource("3_sheet")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quadro3"]
+atlas = ExtResource("3_sheet")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_personagem"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quadro0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quadro1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quadro2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quadro3")
+}],
+"loop": 1,
+"name": &"andar",
+"speed": 6.0
+}]
+
+[node name="Jogador" type="CharacterBody2D" groups=["jogador"]]
+script = ExtResource("1_nave")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_corpo")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 0.95, 1)
+shadow_enabled = true
+script = ExtResource("2_cone")
+angulo_cone = 90.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_unshaded")
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_personagem")
+animation = &"andar"

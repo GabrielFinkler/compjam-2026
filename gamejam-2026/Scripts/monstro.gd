@@ -3,13 +3,12 @@ extends CharacterBody2D
 ## atrapalha a visão dele), mata no contato e congela sob o feixe do modo foco.
 
 @export var caminho: Path2D ## Desenhe um Path2D na cena e selecione ele aqui
-@export var velocidade_patrulha: float = 70.0
-@export var velocidade_perseguicao: float = 170.0
-@export var raio_visao: float = 250.0 ## Distância em que ele passa a te ver
-@export var raio_perseguicao: float = 400.0 ## Distância em que ele desiste de te seguir
+@export var velocidade_patrulha: float = 20.0
+@export var velocidade_perseguicao: float = 60.0
+@export var raio_visao: float = 156.0 ## Distância em que ele passa a te ver
+@export var raio_perseguicao: float = 250.0 ## Distância em que ele desiste de te seguir
 @export var perseguir_para_sempre: bool = false ## Depois que te vê, nunca mais desiste (ignora distância e visão)
-@export var raio: float = 14.0
-@export var cor: Color = Color(0.3, 0.85, 0.3)
+@export var raio: float = 8.0 ## Metade do tamanho do corpo: margem pro feixe do foco pegar nele
 
 const COR_CONGELADO := Color(0.5, 0.8, 1.0)
 
@@ -71,11 +70,3 @@ func _ponto_mais_proximo() -> int:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.has_method("morrer"):
 		body.morrer()
-
-# Visual provisório: corpo verde com dois olhos
-func _draw() -> void:
-	draw_circle(Vector2.ZERO, raio, cor)
-	for lado in [-1.0, 1.0]:
-		var olho := Vector2(lado * raio * 0.38, -raio * 0.2)
-		draw_circle(olho, raio * 0.24, Color.WHITE)
-		draw_circle(olho, raio * 0.11, Color.BLACK)

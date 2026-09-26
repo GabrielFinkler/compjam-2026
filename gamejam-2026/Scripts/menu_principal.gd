@@ -22,19 +22,19 @@ func _criar_interface() -> void:
 
 	# Título e botões na mesma coluna: ficam centralizados juntos
 	var caixa := VBoxContainer.new()
-	caixa.custom_minimum_size = Vector2(260, 0)
-	caixa.add_theme_constant_override("separation", 14)
+	caixa.custom_minimum_size = Vector2(140, 0)
+	caixa.add_theme_constant_override("separation", 6)
 	centro.add_child(caixa)
 
 	var titulo := Label.new()
 	titulo.text = "GAMEJAM 2026"
 	titulo.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	titulo.add_theme_font_size_override("font_size", 40)
+	titulo.add_theme_font_size_override("font_size", 16)
 	titulo.add_theme_color_override("font_color", Color(0.8, 0.85, 1.0))
 	caixa.add_child(titulo)
 
 	var espaco := Control.new()
-	espaco.custom_minimum_size = Vector2(0, 30)
+	espaco.custom_minimum_size = Vector2(0, 12)
 	caixa.add_child(espaco)
 
 	if Persistencia.tem_save():
@@ -61,8 +61,8 @@ func _criar_interface() -> void:
 func _criar_botao(texto: String) -> Button:
 	var botao := Button.new()
 	botao.text = texto
-	botao.custom_minimum_size = Vector2(260, 44)
-	botao.add_theme_font_size_override("font_size", 16)
+	botao.custom_minimum_size = Vector2(140, 20)
+	botao.add_theme_font_size_override("font_size", 8)
 	return botao
 
 # Com save existente, pede confirmação antes de apagar o progresso
@@ -95,20 +95,20 @@ func _criar_painel_opcoes() -> CenterContainer:
 	var painel := PanelContainer.new()
 	var estilo := StyleBoxFlat.new()
 	estilo.bg_color = Color(0, 0, 0, 0.9)
-	estilo.set_corner_radius_all(8)
-	estilo.set_content_margin_all(24)
+	estilo.set_corner_radius_all(3)
+	estilo.set_content_margin_all(10)
 	painel.add_theme_stylebox_override("panel", estilo)
 	centro.add_child(painel)
 
 	var caixa := VBoxContainer.new()
-	caixa.custom_minimum_size = Vector2(300, 0)
-	caixa.add_theme_constant_override("separation", 12)
+	caixa.custom_minimum_size = Vector2(180, 0)
+	caixa.add_theme_constant_override("separation", 6)
 	painel.add_child(caixa)
 
 	var titulo := Label.new()
 	titulo.text = "OPÇÕES"
 	titulo.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	titulo.add_theme_font_size_override("font_size", 24)
+	titulo.add_theme_font_size_override("font_size", 16)
 	caixa.add_child(titulo)
 
 	var rotulo_volume := Label.new()

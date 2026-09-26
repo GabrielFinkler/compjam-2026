@@ -3,8 +3,8 @@ extends CanvasLayer
 ## A barra muda de cor (ciano > amarelo > vermelho) e, com pouca energia,
 ## a moldura pisca em alerta e o astronauta fica com a cara "fraca".
 
-const ESCALA := 3 # Pixel art em escala inteira pra não distorcer
-const MARGEM := Vector2(16, 16)
+const ESCALA := 1 # Tela interna é 480x270 (ampliada pela janela): 1 = pixel-perfect
+const MARGEM := Vector2(6, 6)
 const LIMITE_AMARELO := 0.5
 const LIMITE_VERMELHO := 0.2
 

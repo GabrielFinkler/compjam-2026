@@ -25,16 +25,16 @@ func _criar_interface() -> void:
 
 	var caixa := VBoxContainer.new()
 	caixa.alignment = BoxContainer.ALIGNMENT_CENTER
-	caixa.add_theme_constant_override("separation", 24)
+	caixa.add_theme_constant_override("separation", 10)
 	centro.add_child(caixa)
 
 	var titulo := Label.new()
 	titulo.text = "VOCÊ MORREU!"
 	titulo.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	titulo.add_theme_font_size_override("font_size", 48)
+	titulo.add_theme_font_size_override("font_size", 24)
 	titulo.add_theme_color_override("font_color", Color(0.9, 0.05, 0.05))
 	titulo.add_theme_color_override("font_outline_color", Color(0, 0, 0))
-	titulo.add_theme_constant_override("outline_size", 8)
+	titulo.add_theme_constant_override("outline_size", 4)
 	caixa.add_child(titulo)
 
 	# Pisca o texto pra dar um clima mais aflito
@@ -53,8 +53,8 @@ func _criar_interface() -> void:
 func _criar_botao(texto: String) -> Button:
 	var botao := Button.new()
 	botao.text = texto
-	botao.custom_minimum_size = Vector2(280, 48)
-	botao.add_theme_font_size_override("font_size", 16)
+	botao.custom_minimum_size = Vector2(140, 20)
+	botao.add_theme_font_size_override("font_size", 8)
 	botao.focus_mode = Control.FOCUS_NONE
 	return botao
 

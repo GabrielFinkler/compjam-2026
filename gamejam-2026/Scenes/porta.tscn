@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/porta.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Imagens/porta_metade.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_porta"]
+size = Vector2(32, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_porta"]
+cull_mode = 2
+polygon = PackedVector2Array(-16, -8, 16, -8, 16, 8, -16, 8)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_unshaded"]
+light_mode = 1
+
+[node name="Porta" type="StaticBody2D"]
+script = ExtResource("1_script")
+
+[node name="MetadeA" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-16, -8)
+texture = ExtResource("2_tex")
+centered = false
+
+[node name="MetadeB" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(16, -8)
+scale = Vector2(-1, 1)
+texture = ExtResource("2_tex")
+centered = false
+
+[node name="Led" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_unshaded")
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 1.0
+offset_bottom = 3.0
+mouse_filter = 2
+color = Color(1, 0.23, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_porta")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_porta")

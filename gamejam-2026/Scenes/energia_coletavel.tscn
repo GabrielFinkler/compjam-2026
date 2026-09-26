@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" path="res://Imagens/orbe_energia_spritesheet.png" id="orbe_sheet"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_energia"]
-radius = 12.0
+radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_orbe0"]
 atlas = ExtResource("orbe_sheet")
@@ -78,7 +78,7 @@ shape = SubResource("CircleShape2D_energia")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_orbe")
 animation = &"girar"
 autoplay = "girar"
