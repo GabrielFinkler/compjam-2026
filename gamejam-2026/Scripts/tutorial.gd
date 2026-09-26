@@ -109,20 +109,20 @@ func _concluir() -> void:
 func _criar_interface() -> void:
 	painel = PanelContainer.new()
 	painel.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	# Meia-largura 130 numa tela de 480: não encosta no HUD do canto superior esquerdo (termina em x=105)
-	painel.offset_left = -130
-	painel.offset_right = 130
+	# Meia-largura 110 numa tela de 480: não encosta no HUD do canto superior esquerdo (termina em x=105)
+	painel.offset_left = -110
+	painel.offset_right = 110
 	painel.offset_top = 6
 	painel.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	var estilo := StyleBoxFlat.new()
 	estilo.bg_color = Color(0, 0, 0, 0.7)
 	estilo.set_corner_radius_all(3)
-	estilo.set_content_margin_all(6)
+	estilo.set_content_margin_all(4)
 	painel.add_theme_stylebox_override("panel", estilo)
 	add_child(painel)
 
 	texto = Label.new()
 	texto.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	texto.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	texto.add_theme_font_size_override("font_size", 8)
+	texto.add_theme_font_size_override("font_size", 6)
 	painel.add_child(texto)

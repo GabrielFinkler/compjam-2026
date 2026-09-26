@@ -15,6 +15,7 @@ const FALAS := [
 const NOME := "COMPUTADOR DA NAVE"
 const COR_ALERTA := Color(1.0, 0.22, 0.15)
 const LETRAS_POR_SEGUNDO := 45.0
+const TAMANHO_FONTE := 6 # Nítida: a tela é esticada 4x (1080p), então sai com 24 px reais
 const TEMPO_ENTRADA := 1.2 # Tela clareando do preto antes da primeira fala
 const CHAVE_VISTA := &"historia_fase1_vista" # Guardada no root: sobrevive ao reload da cena ao morrer
 
@@ -126,9 +127,9 @@ func _criar_interface() -> void:
 	_painel = PanelContainer.new()
 	_painel.theme = preload("res://Scripts/tema_pixel.gd").criar()
 	_painel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	_painel.offset_left = 12
-	_painel.offset_right = -12
-	_painel.offset_bottom = -8
+	_painel.offset_left = 40
+	_painel.offset_right = -40
+	_painel.offset_bottom = -6
 	_painel.grow_vertical = Control.GROW_DIRECTION_BEGIN
 	_painel.visible = false
 	var estilo := StyleBoxFlat.new()
@@ -137,23 +138,25 @@ func _criar_interface() -> void:
 	estilo.set_border_width_all(1)
 	estilo.border_width_left = 3
 	estilo.set_corner_radius_all(3)
-	estilo.set_content_margin_all(7)
+	estilo.set_content_margin_all(5)
 	_painel.add_theme_stylebox_override("panel", estilo)
 	add_child(_painel)
 
 	var caixa := VBoxContainer.new()
-	caixa.add_theme_constant_override("separation", 6)
+	caixa.add_theme_constant_override("separation", 4)
 	_painel.add_child(caixa)
 
 	var nome := Label.new()
 	nome.text = NOME
 	nome.add_theme_color_override("font_color", COR_ALERTA)
+	nome.add_theme_font_size_override("font_size", TAMANHO_FONTE)
 	caixa.add_child(nome)
 
 	_texto = Label.new()
 	_texto.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_texto.custom_minimum_size = Vector2(0, 44) # 4 linhas: a caixa não muda de tamanho entre falas
-	_texto.add_theme_constant_override("line_spacing", 3)
+	_texto.custom_minimum_size = Vector2(0, 24) # 3 linhas: a caixa não muda de tamanho entre falas
+	_texto.add_theme_font_size_override("font_size", TAMANHO_FONTE)
+	_texto.add_theme_constant_override("line_spacing", 2)
 	# Quebra as linhas pelo texto inteiro: as palavras não pulam de linha enquanto aparecem
 	_texto.visible_characters_behavior = TextServer.VC_CHARS_AFTER_SHAPING
 	caixa.add_child(_texto)
@@ -162,6 +165,7 @@ func _criar_interface() -> void:
 	_seta.text = "CLIQUE PARA CONTINUAR >"
 	_seta.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_seta.add_theme_color_override("font_color", Color(0.6, 0.6, 0.65))
+	_seta.add_theme_font_size_override("font_size", TAMANHO_FONTE)
 	caixa.add_child(_seta)
 	var pisca := create_tween().set_loops()
 	pisca.tween_property(_seta, "modulate:a", 0.3, 0.5)

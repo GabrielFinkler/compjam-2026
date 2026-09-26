@@ -8,7 +8,8 @@ extends Node
 const COR_PADRAO := Color(0.15, 0.68, 0.88)
 const TEMPO_PADRAO := 3.0
 const TEMPO_COM_FILA := 2.5 # Com outros avisos esperando, cada um fica um pouco menos na tela
-const LARGURA_MAXIMA := 300.0 # Textos maiores quebram linha em vez de sair da tela (480px)
+const LARGURA_MAXIMA := 240.0 # Textos maiores quebram linha em vez de sair da tela (480px)
+const TAMANHO_FONTE := 6 # Nítida: a tela é esticada 4x (1080p), então sai com 24 px reais
 const META_FILA := &"fila_avisos"
 
 var _pedidos: Array[Dictionary] = []
@@ -49,8 +50,8 @@ func _exibir(fase: Node, mensagem: String, cor: Color, tempo: float) -> CanvasLa
 	var centro := CenterContainer.new()
 	camada.add_child(centro)
 	centro.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
-	centro.offset_top = -40
-	centro.offset_bottom = -12
+	centro.offset_top = -30
+	centro.offset_bottom = -8
 	centro.grow_vertical = Control.GROW_DIRECTION_BEGIN
 	var painel := PanelContainer.new()
 	var estilo := StyleBoxFlat.new()
@@ -58,14 +59,15 @@ func _exibir(fase: Node, mensagem: String, cor: Color, tempo: float) -> CanvasLa
 	estilo.border_color = cor
 	estilo.set_border_width_all(1)
 	estilo.set_corner_radius_all(3)
-	estilo.set_content_margin_all(6)
+	estilo.set_content_margin_all(4)
 	painel.add_theme_stylebox_override("panel", estilo)
 	painel.theme = preload("res://Scripts/tema_pixel.gd").criar()
 	centro.add_child(painel)
 	var texto := Label.new()
 	texto.text = mensagem
 	texto.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	if mensagem.length() * 8 > LARGURA_MAXIMA:
+	texto.add_theme_font_size_override("font_size", TAMANHO_FONTE)
+	if mensagem.length() * TAMANHO_FONTE > LARGURA_MAXIMA:
 		texto.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		texto.custom_minimum_size = Vector2(LARGURA_MAXIMA, 0)
 	painel.add_child(texto)
