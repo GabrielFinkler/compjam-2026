@@ -91,11 +91,11 @@ Os builds (`gamejam-2026/Compilados/`) não vão para o git (passam do limite de
 
 ## Equipe Traco
 
-Feito durante as 24 horas da **CompJam 2026**, a game jam da **UFRGS**.
+Feito durante as 24 horas da **CompJam 2026**, a GameJam da **UFRGS**.
 
 - Lucas Amaral
 - Gabriel Finkler
 - Drennger
-- Tairel Lopes
+- Kauã Ezequiel
 
 <sub>Fonte: Press Start 2P (SIL Open Font License, ver `gamejam-2026/Resources/fonts/OFL.txt`). Feito com Godot Engine.</sub>
