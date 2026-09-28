@@ -95,7 +95,8 @@ Feito durante as 24 horas da **CompJam 2026**, a GameJam da **UFRGS**.
 
 - Lucas Amaral
 - Gabriel Finkler
-- Drennger
+- Luan Souza
 - Kauã Ezequiel
+- Marina Moreira
 
 <sub>Fonte: Press Start 2P (SIL Open Font License, ver `gamejam-2026/Resources/fonts/OFL.txt`). Feito com Godot Engine.</sub>
